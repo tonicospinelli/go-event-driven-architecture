@@ -81,6 +81,50 @@
         ]
       }
     },
+    "/api/customers/{id}/change-sms": {
+      "put": {
+        "summary": "Change a customers SMS number",
+        "operationId": "changeSmsNumber",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/customerspbChangeSmsNumberResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "smsNumber": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Customer"
+        ]
+      }
+    },
     "/api/customers/{id}/disable": {
       "put": {
         "summary": "Disable a customer",
@@ -162,6 +206,9 @@
   },
   "definitions": {
     "customerspbAuthorizeCustomerResponse": {
+      "type": "object"
+    },
+    "customerspbChangeSmsNumberResponse": {
       "type": "object"
     },
     "customerspbCustomer": {
