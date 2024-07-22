@@ -37,19 +37,3 @@ func InitializeScenario(ctx *godog.ScenarioContext) {
 	ctx.Step(`^I create the store called "([^"]*)"$`, iCreateTheStoreCalled)
 	ctx.Step(`^no store called "([^"]*)" exists$`, noStoreCalledExists)
 }
-
-// in db/products.go
-type ProductRepository struct{}
-
-func NewProductRepository() *ProductRepository {}
-func (r ProductRepository) Find() error        {}
-func (r ProductRepository) Save() error        {}
-func (r ProductRepository) Update() error      {}
-func (r ProductRepository) Delete() error      {}
-
-// elsewhere in services.go
-type ProductFinder interface {
-	Find() error
-}
-
-func NewService(finder ProductFinder) *Service {}
