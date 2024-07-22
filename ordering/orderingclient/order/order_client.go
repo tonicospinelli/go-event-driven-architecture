@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  CancelOrder cancels an order
+CancelOrder cancels an order
 */
 func (a *Client) CancelOrder(params *CancelOrderParams, opts ...ClientOption) (*CancelOrderOK, error) {
 	// TODO: Validate the params before sending
@@ -75,7 +75,7 @@ func (a *Client) CancelOrder(params *CancelOrderParams, opts ...ClientOption) (*
 }
 
 /*
-  CreateOrder starts a new order
+CreateOrder starts a new order
 */
 func (a *Client) CreateOrder(params *CreateOrderParams, opts ...ClientOption) (*CreateOrderOK, error) {
 	// TODO: Validate the params before sending
@@ -112,7 +112,7 @@ func (a *Client) CreateOrder(params *CreateOrderParams, opts ...ClientOption) (*
 }
 
 /*
-  GetOrder gets an order
+GetOrder gets an order
 */
 func (a *Client) GetOrder(params *GetOrderParams, opts ...ClientOption) (*GetOrderOK, error) {
 	// TODO: Validate the params before sending

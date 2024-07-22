@@ -46,7 +46,8 @@ func NewGetStoresOK() *GetStoresOK {
 	return &GetStoresOK{}
 }
 
-/* GetStoresOK describes a response with status code 200, with default header values.
+/*
+GetStoresOK describes a response with status code 200, with default header values.
 
 A successful response.
 */
@@ -54,9 +55,44 @@ type GetStoresOK struct {
 	Payload *models.StorespbGetStoresResponse
 }
 
+// IsSuccess returns true when this get stores o k response has a 2xx status code
+func (o *GetStoresOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get stores o k response has a 3xx status code
+func (o *GetStoresOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get stores o k response has a 4xx status code
+func (o *GetStoresOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get stores o k response has a 5xx status code
+func (o *GetStoresOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get stores o k response a status code equal to that given
+func (o *GetStoresOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the get stores o k response
+func (o *GetStoresOK) Code() int {
+	return 200
+}
+
 func (o *GetStoresOK) Error() string {
 	return fmt.Sprintf("[GET /api/stores][%d] getStoresOK  %+v", 200, o.Payload)
 }
+
+func (o *GetStoresOK) String() string {
+	return fmt.Sprintf("[GET /api/stores][%d] getStoresOK  %+v", 200, o.Payload)
+}
+
 func (o *GetStoresOK) GetPayload() *models.StorespbGetStoresResponse {
 	return o.Payload
 }
@@ -80,7 +116,8 @@ func NewGetStoresDefault(code int) *GetStoresDefault {
 	}
 }
 
-/* GetStoresDefault describes a response with status code -1, with default header values.
+/*
+GetStoresDefault describes a response with status code -1, with default header values.
 
 An unexpected error response.
 */
@@ -88,6 +125,31 @@ type GetStoresDefault struct {
 	_statusCode int
 
 	Payload *models.RPCStatus
+}
+
+// IsSuccess returns true when this get stores default response has a 2xx status code
+func (o *GetStoresDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get stores default response has a 3xx status code
+func (o *GetStoresDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get stores default response has a 4xx status code
+func (o *GetStoresDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get stores default response has a 5xx status code
+func (o *GetStoresDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get stores default response a status code equal to that given
+func (o *GetStoresDefault) IsCode(code int) bool {
+	return o._statusCode == code
 }
 
 // Code gets the status code for the get stores default response
@@ -98,6 +160,11 @@ func (o *GetStoresDefault) Code() int {
 func (o *GetStoresDefault) Error() string {
 	return fmt.Sprintf("[GET /api/stores][%d] getStores default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetStoresDefault) String() string {
+	return fmt.Sprintf("[GET /api/stores][%d] getStores default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetStoresDefault) GetPayload() *models.RPCStatus {
 	return o.Payload
 }

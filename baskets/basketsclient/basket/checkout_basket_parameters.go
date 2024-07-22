@@ -54,15 +54,17 @@ func NewCheckoutBasketParamsWithHTTPClient(client *http.Client) *CheckoutBasketP
 	}
 }
 
-/* CheckoutBasketParams contains all the parameters to send to the API endpoint
-   for the checkout basket operation.
+/*
+CheckoutBasketParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the checkout basket operation.
+
+	Typically these are written to a http.Request.
 */
 type CheckoutBasketParams struct {
 
 	// Body.
-	Body *models.CheckoutBasketParamsBody
+	Body *models.BasketServiceCheckoutBasketBody
 
 	// ID.
 	ID string
@@ -121,13 +123,13 @@ func (o *CheckoutBasketParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the checkout basket params
-func (o *CheckoutBasketParams) WithBody(body *models.CheckoutBasketParamsBody) *CheckoutBasketParams {
+func (o *CheckoutBasketParams) WithBody(body *models.BasketServiceCheckoutBasketBody) *CheckoutBasketParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the checkout basket params
-func (o *CheckoutBasketParams) SetBody(body *models.CheckoutBasketParamsBody) {
+func (o *CheckoutBasketParams) SetBody(body *models.BasketServiceCheckoutBasketBody) {
 	o.Body = body
 }
 

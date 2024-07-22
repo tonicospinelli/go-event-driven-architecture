@@ -46,7 +46,8 @@ func NewStartBasketOK() *StartBasketOK {
 	return &StartBasketOK{}
 }
 
-/* StartBasketOK describes a response with status code 200, with default header values.
+/*
+StartBasketOK describes a response with status code 200, with default header values.
 
 A successful response.
 */
@@ -54,9 +55,44 @@ type StartBasketOK struct {
 	Payload *models.BasketspbStartBasketResponse
 }
 
+// IsSuccess returns true when this start basket o k response has a 2xx status code
+func (o *StartBasketOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this start basket o k response has a 3xx status code
+func (o *StartBasketOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this start basket o k response has a 4xx status code
+func (o *StartBasketOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this start basket o k response has a 5xx status code
+func (o *StartBasketOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this start basket o k response a status code equal to that given
+func (o *StartBasketOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the start basket o k response
+func (o *StartBasketOK) Code() int {
+	return 200
+}
+
 func (o *StartBasketOK) Error() string {
 	return fmt.Sprintf("[POST /api/baskets][%d] startBasketOK  %+v", 200, o.Payload)
 }
+
+func (o *StartBasketOK) String() string {
+	return fmt.Sprintf("[POST /api/baskets][%d] startBasketOK  %+v", 200, o.Payload)
+}
+
 func (o *StartBasketOK) GetPayload() *models.BasketspbStartBasketResponse {
 	return o.Payload
 }
@@ -80,7 +116,8 @@ func NewStartBasketDefault(code int) *StartBasketDefault {
 	}
 }
 
-/* StartBasketDefault describes a response with status code -1, with default header values.
+/*
+StartBasketDefault describes a response with status code -1, with default header values.
 
 An unexpected error response.
 */
@@ -88,6 +125,31 @@ type StartBasketDefault struct {
 	_statusCode int
 
 	Payload *models.RPCStatus
+}
+
+// IsSuccess returns true when this start basket default response has a 2xx status code
+func (o *StartBasketDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this start basket default response has a 3xx status code
+func (o *StartBasketDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this start basket default response has a 4xx status code
+func (o *StartBasketDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this start basket default response has a 5xx status code
+func (o *StartBasketDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this start basket default response a status code equal to that given
+func (o *StartBasketDefault) IsCode(code int) bool {
+	return o._statusCode == code
 }
 
 // Code gets the status code for the start basket default response
@@ -98,6 +160,11 @@ func (o *StartBasketDefault) Code() int {
 func (o *StartBasketDefault) Error() string {
 	return fmt.Sprintf("[POST /api/baskets][%d] startBasket default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *StartBasketDefault) String() string {
+	return fmt.Sprintf("[POST /api/baskets][%d] startBasket default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *StartBasketDefault) GetPayload() *models.RPCStatus {
 	return o.Payload
 }

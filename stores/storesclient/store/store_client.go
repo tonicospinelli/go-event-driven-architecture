@@ -40,7 +40,7 @@ type ClientService interface {
 }
 
 /*
-  CreateStore creates a new store
+CreateStore creates a new store
 */
 func (a *Client) CreateStore(params *CreateStoreParams, opts ...ClientOption) (*CreateStoreOK, error) {
 	// TODO: Validate the params before sending
@@ -77,7 +77,7 @@ func (a *Client) CreateStore(params *CreateStoreParams, opts ...ClientOption) (*
 }
 
 /*
-  GetStore gets a store
+GetStore gets a store
 */
 func (a *Client) GetStore(params *GetStoreParams, opts ...ClientOption) (*GetStoreOK, error) {
 	// TODO: Validate the params before sending
@@ -114,7 +114,7 @@ func (a *Client) GetStore(params *GetStoreParams, opts ...ClientOption) (*GetSto
 }
 
 /*
-  GetStores gets a list of stores
+GetStores gets a list of stores
 */
 func (a *Client) GetStores(params *GetStoresParams, opts ...ClientOption) (*GetStoresOK, error) {
 	// TODO: Validate the params before sending
@@ -151,7 +151,7 @@ func (a *Client) GetStores(params *GetStoresParams, opts ...ClientOption) (*GetS
 }
 
 /*
-  RebrandStore rebrand store API
+RebrandStore rebrand store API
 */
 func (a *Client) RebrandStore(params *RebrandStoreParams, opts ...ClientOption) (*RebrandStoreOK, error) {
 	// TODO: Validate the params before sending

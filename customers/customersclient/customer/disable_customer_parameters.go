@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"eda-in-golang/customers/customersclient/models"
 )
 
 // NewDisableCustomerParams creates a new DisableCustomerParams object,
@@ -52,15 +54,17 @@ func NewDisableCustomerParamsWithHTTPClient(client *http.Client) *DisableCustome
 	}
 }
 
-/* DisableCustomerParams contains all the parameters to send to the API endpoint
-   for the disable customer operation.
+/*
+DisableCustomerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the disable customer operation.
+
+	Typically these are written to a http.Request.
 */
 type DisableCustomerParams struct {
 
 	// Body.
-	Body interface{}
+	Body models.CustomersServiceDisableCustomerBody
 
 	// ID.
 	ID string
@@ -119,13 +123,13 @@ func (o *DisableCustomerParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the disable customer params
-func (o *DisableCustomerParams) WithBody(body interface{}) *DisableCustomerParams {
+func (o *DisableCustomerParams) WithBody(body models.CustomersServiceDisableCustomerBody) *DisableCustomerParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the disable customer params
-func (o *DisableCustomerParams) SetBody(body interface{}) {
+func (o *DisableCustomerParams) SetBody(body models.CustomersServiceDisableCustomerBody) {
 	o.Body = body
 }
 

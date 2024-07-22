@@ -54,15 +54,17 @@ func NewAddItemParamsWithHTTPClient(client *http.Client) *AddItemParams {
 	}
 }
 
-/* AddItemParams contains all the parameters to send to the API endpoint
-   for the add item operation.
+/*
+AddItemParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the add item operation.
+
+	Typically these are written to a http.Request.
 */
 type AddItemParams struct {
 
 	// Body.
-	Body *models.AddItemParamsBody
+	Body *models.BasketServiceAddItemBody
 
 	// ID.
 	ID string
@@ -121,13 +123,13 @@ func (o *AddItemParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the add item params
-func (o *AddItemParams) WithBody(body *models.AddItemParamsBody) *AddItemParams {
+func (o *AddItemParams) WithBody(body *models.BasketServiceAddItemBody) *AddItemParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the add item params
-func (o *AddItemParams) SetBody(body *models.AddItemParamsBody) {
+func (o *AddItemParams) SetBody(body *models.BasketServiceAddItemBody) {
 	o.Body = body
 }
 

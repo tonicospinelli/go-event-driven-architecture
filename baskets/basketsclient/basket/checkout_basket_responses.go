@@ -46,7 +46,8 @@ func NewCheckoutBasketOK() *CheckoutBasketOK {
 	return &CheckoutBasketOK{}
 }
 
-/* CheckoutBasketOK describes a response with status code 200, with default header values.
+/*
+CheckoutBasketOK describes a response with status code 200, with default header values.
 
 A successful response.
 */
@@ -54,9 +55,44 @@ type CheckoutBasketOK struct {
 	Payload models.BasketspbCheckoutBasketResponse
 }
 
+// IsSuccess returns true when this checkout basket o k response has a 2xx status code
+func (o *CheckoutBasketOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this checkout basket o k response has a 3xx status code
+func (o *CheckoutBasketOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checkout basket o k response has a 4xx status code
+func (o *CheckoutBasketOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this checkout basket o k response has a 5xx status code
+func (o *CheckoutBasketOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checkout basket o k response a status code equal to that given
+func (o *CheckoutBasketOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the checkout basket o k response
+func (o *CheckoutBasketOK) Code() int {
+	return 200
+}
+
 func (o *CheckoutBasketOK) Error() string {
 	return fmt.Sprintf("[PUT /api/baskets/{id}/checkout][%d] checkoutBasketOK  %+v", 200, o.Payload)
 }
+
+func (o *CheckoutBasketOK) String() string {
+	return fmt.Sprintf("[PUT /api/baskets/{id}/checkout][%d] checkoutBasketOK  %+v", 200, o.Payload)
+}
+
 func (o *CheckoutBasketOK) GetPayload() models.BasketspbCheckoutBasketResponse {
 	return o.Payload
 }
@@ -78,7 +114,8 @@ func NewCheckoutBasketDefault(code int) *CheckoutBasketDefault {
 	}
 }
 
-/* CheckoutBasketDefault describes a response with status code -1, with default header values.
+/*
+CheckoutBasketDefault describes a response with status code -1, with default header values.
 
 An unexpected error response.
 */
@@ -86,6 +123,31 @@ type CheckoutBasketDefault struct {
 	_statusCode int
 
 	Payload *models.RPCStatus
+}
+
+// IsSuccess returns true when this checkout basket default response has a 2xx status code
+func (o *CheckoutBasketDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this checkout basket default response has a 3xx status code
+func (o *CheckoutBasketDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this checkout basket default response has a 4xx status code
+func (o *CheckoutBasketDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this checkout basket default response has a 5xx status code
+func (o *CheckoutBasketDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this checkout basket default response a status code equal to that given
+func (o *CheckoutBasketDefault) IsCode(code int) bool {
+	return o._statusCode == code
 }
 
 // Code gets the status code for the checkout basket default response
@@ -96,6 +158,11 @@ func (o *CheckoutBasketDefault) Code() int {
 func (o *CheckoutBasketDefault) Error() string {
 	return fmt.Sprintf("[PUT /api/baskets/{id}/checkout][%d] checkoutBasket default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CheckoutBasketDefault) String() string {
+	return fmt.Sprintf("[PUT /api/baskets/{id}/checkout][%d] checkoutBasket default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CheckoutBasketDefault) GetPayload() *models.RPCStatus {
 	return o.Payload
 }

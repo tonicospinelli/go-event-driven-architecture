@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"eda-in-golang/customers/customersclient/models"
 )
 
 // NewEnableCustomerParams creates a new EnableCustomerParams object,
@@ -52,15 +54,17 @@ func NewEnableCustomerParamsWithHTTPClient(client *http.Client) *EnableCustomerP
 	}
 }
 
-/* EnableCustomerParams contains all the parameters to send to the API endpoint
-   for the enable customer operation.
+/*
+EnableCustomerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the enable customer operation.
+
+	Typically these are written to a http.Request.
 */
 type EnableCustomerParams struct {
 
 	// Body.
-	Body interface{}
+	Body models.CustomersServiceEnableCustomerBody
 
 	// ID.
 	ID string
@@ -119,13 +123,13 @@ func (o *EnableCustomerParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the enable customer params
-func (o *EnableCustomerParams) WithBody(body interface{}) *EnableCustomerParams {
+func (o *EnableCustomerParams) WithBody(body models.CustomersServiceEnableCustomerBody) *EnableCustomerParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the enable customer params
-func (o *EnableCustomerParams) SetBody(body interface{}) {
+func (o *EnableCustomerParams) SetBody(body models.CustomersServiceEnableCustomerBody) {
 	o.Body = body
 }
 

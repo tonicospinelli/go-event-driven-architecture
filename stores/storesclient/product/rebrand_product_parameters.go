@@ -54,15 +54,17 @@ func NewRebrandProductParamsWithHTTPClient(client *http.Client) *RebrandProductP
 	}
 }
 
-/* RebrandProductParams contains all the parameters to send to the API endpoint
-   for the rebrand product operation.
+/*
+RebrandProductParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the rebrand product operation.
+
+	Typically these are written to a http.Request.
 */
 type RebrandProductParams struct {
 
 	// Body.
-	Body *models.RebrandProductParamsBody
+	Body *models.StoresServiceRebrandProductBody
 
 	// ID.
 	ID string
@@ -121,13 +123,13 @@ func (o *RebrandProductParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the rebrand product params
-func (o *RebrandProductParams) WithBody(body *models.RebrandProductParamsBody) *RebrandProductParams {
+func (o *RebrandProductParams) WithBody(body *models.StoresServiceRebrandProductBody) *RebrandProductParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the rebrand product params
-func (o *RebrandProductParams) SetBody(body *models.RebrandProductParamsBody) {
+func (o *RebrandProductParams) SetBody(body *models.StoresServiceRebrandProductBody) {
 	o.Body = body
 }
 

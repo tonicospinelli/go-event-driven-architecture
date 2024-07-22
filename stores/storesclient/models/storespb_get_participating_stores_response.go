@@ -82,6 +82,11 @@ func (m *StorespbGetParticipatingStoresResponse) contextValidateStores(ctx conte
 	for i := 0; i < len(m.Stores); i++ {
 
 		if m.Stores[i] != nil {
+
+			if swag.IsZero(m.Stores[i]) { // not required
+				return nil
+			}
+
 			if err := m.Stores[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("stores" + "." + strconv.Itoa(i))

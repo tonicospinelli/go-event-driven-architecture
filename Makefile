@@ -26,16 +26,16 @@ clean-services:
 	docker image rm mallbots-baskets mallbots-cosec mallbots-customers mallbots-depot mallbots-notifications mallbots-ordering mallbots-payments mallbots-search mallbots-stores
 
 build-monolith:
-	docker build -t mallbots-monolith --file docker/Dockerfile .
+	docker build -t mallbots-monolith --file docker/monolith/Dockerfile .
 
 build-services:
-	docker build -t mallbots-baskets --file docker/Dockerfile.microservices --build-arg=service=baskets .
-	docker build -t mallbots-cosec --file docker/Dockerfile.microservices --build-arg=service=cosec .
-	docker build -t mallbots-customers --file docker/Dockerfile.microservices --build-arg=service=customers .
-	docker build -t mallbots-depot --file docker/Dockerfile.microservices --build-arg=service=depot .
-	docker build -t mallbots-notifications --file docker/Dockerfile.microservices --build-arg=service=notifications .
-	docker build -t mallbots-ordering --file docker/Dockerfile.microservices --build-arg=service=ordering .
-	docker build -t mallbots-payments --file docker/Dockerfile.microservices --build-arg=service=payments .
-	docker build -t mallbots-search --file docker/Dockerfile.microservices --build-arg=service=search .
-	docker build -t mallbots-stores --file docker/Dockerfile.microservices --build-arg=service=stores .
+	docker build -t mallbots-baskets --file docker/microservice/Dockerfile --build-arg=service=baskets .
+	docker build -t mallbots-cosec --file docker/microservice/Dockerfile --build-arg=service=cosec .
+	docker build -t mallbots-customers --file docker/microservice/Dockerfile --build-arg=service=customers .
+	docker build -t mallbots-depot --file docker/microservice/Dockerfile --build-arg=service=depot .
+	docker build -t mallbots-notifications --file docker/microservice/Dockerfile --build-arg=service=notifications .
+	docker build -t mallbots-ordering --file docker/microservice/Dockerfile --build-arg=service=ordering .
+	docker build -t mallbots-payments --file docker/microservice/Dockerfile --build-arg=service=payments .
+	docker build -t mallbots-search --file docker/microservice/Dockerfile --build-arg=service=search .
+	docker build -t mallbots-stores --file docker/microservice/Dockerfile --build-arg=service=stores .
 

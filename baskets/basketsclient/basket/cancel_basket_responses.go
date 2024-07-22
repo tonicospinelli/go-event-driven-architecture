@@ -46,7 +46,8 @@ func NewCancelBasketOK() *CancelBasketOK {
 	return &CancelBasketOK{}
 }
 
-/* CancelBasketOK describes a response with status code 200, with default header values.
+/*
+CancelBasketOK describes a response with status code 200, with default header values.
 
 A successful response.
 */
@@ -54,9 +55,44 @@ type CancelBasketOK struct {
 	Payload models.BasketspbCancelBasketResponse
 }
 
+// IsSuccess returns true when this cancel basket o k response has a 2xx status code
+func (o *CancelBasketOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cancel basket o k response has a 3xx status code
+func (o *CancelBasketOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cancel basket o k response has a 4xx status code
+func (o *CancelBasketOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cancel basket o k response has a 5xx status code
+func (o *CancelBasketOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cancel basket o k response a status code equal to that given
+func (o *CancelBasketOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the cancel basket o k response
+func (o *CancelBasketOK) Code() int {
+	return 200
+}
+
 func (o *CancelBasketOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/baskets/{id}][%d] cancelBasketOK  %+v", 200, o.Payload)
 }
+
+func (o *CancelBasketOK) String() string {
+	return fmt.Sprintf("[DELETE /api/baskets/{id}][%d] cancelBasketOK  %+v", 200, o.Payload)
+}
+
 func (o *CancelBasketOK) GetPayload() models.BasketspbCancelBasketResponse {
 	return o.Payload
 }
@@ -78,7 +114,8 @@ func NewCancelBasketDefault(code int) *CancelBasketDefault {
 	}
 }
 
-/* CancelBasketDefault describes a response with status code -1, with default header values.
+/*
+CancelBasketDefault describes a response with status code -1, with default header values.
 
 An unexpected error response.
 */
@@ -86,6 +123,31 @@ type CancelBasketDefault struct {
 	_statusCode int
 
 	Payload *models.RPCStatus
+}
+
+// IsSuccess returns true when this cancel basket default response has a 2xx status code
+func (o *CancelBasketDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this cancel basket default response has a 3xx status code
+func (o *CancelBasketDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this cancel basket default response has a 4xx status code
+func (o *CancelBasketDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this cancel basket default response has a 5xx status code
+func (o *CancelBasketDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this cancel basket default response a status code equal to that given
+func (o *CancelBasketDefault) IsCode(code int) bool {
+	return o._statusCode == code
 }
 
 // Code gets the status code for the cancel basket default response
@@ -96,6 +158,11 @@ func (o *CancelBasketDefault) Code() int {
 func (o *CancelBasketDefault) Error() string {
 	return fmt.Sprintf("[DELETE /api/baskets/{id}][%d] cancelBasket default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CancelBasketDefault) String() string {
+	return fmt.Sprintf("[DELETE /api/baskets/{id}][%d] cancelBasket default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CancelBasketDefault) GetPayload() *models.RPCStatus {
 	return o.Payload
 }

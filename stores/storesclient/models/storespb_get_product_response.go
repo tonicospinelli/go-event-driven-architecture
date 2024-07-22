@@ -72,6 +72,11 @@ func (m *StorespbGetProductResponse) ContextValidate(ctx context.Context, format
 func (m *StorespbGetProductResponse) contextValidateProduct(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Product != nil {
+
+		if swag.IsZero(m.Product) { // not required
+			return nil
+		}
+
 		if err := m.Product.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("product")

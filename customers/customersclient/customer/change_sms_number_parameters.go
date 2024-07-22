@@ -54,15 +54,17 @@ func NewChangeSmsNumberParamsWithHTTPClient(client *http.Client) *ChangeSmsNumbe
 	}
 }
 
-/* ChangeSmsNumberParams contains all the parameters to send to the API endpoint
-   for the change sms number operation.
+/*
+ChangeSmsNumberParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the change sms number operation.
+
+	Typically these are written to a http.Request.
 */
 type ChangeSmsNumberParams struct {
 
 	// Body.
-	Body *models.ChangeSmsNumberParamsBody
+	Body *models.CustomersServiceChangeSmsNumberBody
 
 	// ID.
 	ID string
@@ -121,13 +123,13 @@ func (o *ChangeSmsNumberParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the change sms number params
-func (o *ChangeSmsNumberParams) WithBody(body *models.ChangeSmsNumberParamsBody) *ChangeSmsNumberParams {
+func (o *ChangeSmsNumberParams) WithBody(body *models.CustomersServiceChangeSmsNumberBody) *ChangeSmsNumberParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the change sms number params
-func (o *ChangeSmsNumberParams) SetBody(body *models.ChangeSmsNumberParamsBody) {
+func (o *ChangeSmsNumberParams) SetBody(body *models.CustomersServiceChangeSmsNumberBody) {
 	o.Body = body
 }
 

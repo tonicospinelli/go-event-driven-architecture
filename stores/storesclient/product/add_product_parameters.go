@@ -54,15 +54,17 @@ func NewAddProductParamsWithHTTPClient(client *http.Client) *AddProductParams {
 	}
 }
 
-/* AddProductParams contains all the parameters to send to the API endpoint
-   for the add product operation.
+/*
+AddProductParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the add product operation.
+
+	Typically these are written to a http.Request.
 */
 type AddProductParams struct {
 
 	// Body.
-	Body *models.AddProductParamsBody
+	Body *models.StoresServiceAddProductBody
 
 	// StoreID.
 	StoreID string
@@ -121,13 +123,13 @@ func (o *AddProductParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the add product params
-func (o *AddProductParams) WithBody(body *models.AddProductParamsBody) *AddProductParams {
+func (o *AddProductParams) WithBody(body *models.StoresServiceAddProductBody) *AddProductParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the add product params
-func (o *AddProductParams) SetBody(body *models.AddProductParamsBody) {
+func (o *AddProductParams) SetBody(body *models.StoresServiceAddProductBody) {
 	o.Body = body
 }
 

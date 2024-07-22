@@ -52,10 +52,12 @@ func NewGetBasketParamsWithHTTPClient(client *http.Client) *GetBasketParams {
 	}
 }
 
-/* GetBasketParams contains all the parameters to send to the API endpoint
-   for the get basket operation.
+/*
+GetBasketParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get basket operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBasketParams struct {
 

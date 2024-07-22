@@ -72,6 +72,11 @@ func (m *BasketspbGetBasketResponse) ContextValidate(ctx context.Context, format
 func (m *BasketspbGetBasketResponse) contextValidateBasket(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Basket != nil {
+
+		if swag.IsZero(m.Basket) { // not required
+			return nil
+		}
+
 		if err := m.Basket.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("basket")

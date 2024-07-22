@@ -40,7 +40,7 @@ type ClientService interface {
 }
 
 /*
-  CancelBasket cancels a shopping basket
+CancelBasket cancels a shopping basket
 */
 func (a *Client) CancelBasket(params *CancelBasketParams, opts ...ClientOption) (*CancelBasketOK, error) {
 	// TODO: Validate the params before sending
@@ -77,7 +77,7 @@ func (a *Client) CancelBasket(params *CancelBasketParams, opts ...ClientOption) 
 }
 
 /*
-  CheckoutBasket checkouts with a shopping basket
+CheckoutBasket checkouts with a shopping basket
 */
 func (a *Client) CheckoutBasket(params *CheckoutBasketParams, opts ...ClientOption) (*CheckoutBasketOK, error) {
 	// TODO: Validate the params before sending
@@ -114,7 +114,7 @@ func (a *Client) CheckoutBasket(params *CheckoutBasketParams, opts ...ClientOpti
 }
 
 /*
-  GetBasket gets a basket
+GetBasket gets a basket
 */
 func (a *Client) GetBasket(params *GetBasketParams, opts ...ClientOption) (*GetBasketOK, error) {
 	// TODO: Validate the params before sending
@@ -151,7 +151,7 @@ func (a *Client) GetBasket(params *GetBasketParams, opts ...ClientOption) (*GetB
 }
 
 /*
-  StartBasket starts a new shopping basket
+StartBasket starts a new shopping basket
 */
 func (a *Client) StartBasket(params *StartBasketParams, opts ...ClientOption) (*StartBasketOK, error) {
 	// TODO: Validate the params before sending

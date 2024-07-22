@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"eda-in-golang/stores/storesclient/models"
 )
 
 // NewEnableParticipationParams creates a new EnableParticipationParams object,
@@ -52,15 +54,17 @@ func NewEnableParticipationParamsWithHTTPClient(client *http.Client) *EnablePart
 	}
 }
 
-/* EnableParticipationParams contains all the parameters to send to the API endpoint
-   for the enable participation operation.
+/*
+EnableParticipationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the enable participation operation.
+
+	Typically these are written to a http.Request.
 */
 type EnableParticipationParams struct {
 
 	// Body.
-	Body interface{}
+	Body models.StoresServiceEnableParticipationBody
 
 	// ID.
 	ID string
@@ -119,13 +123,13 @@ func (o *EnableParticipationParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the enable participation params
-func (o *EnableParticipationParams) WithBody(body interface{}) *EnableParticipationParams {
+func (o *EnableParticipationParams) WithBody(body models.StoresServiceEnableParticipationBody) *EnableParticipationParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the enable participation params
-func (o *EnableParticipationParams) SetBody(body interface{}) {
+func (o *EnableParticipationParams) SetBody(body models.StoresServiceEnableParticipationBody) {
 	o.Body = body
 }
 

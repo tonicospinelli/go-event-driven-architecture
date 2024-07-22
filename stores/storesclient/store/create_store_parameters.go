@@ -54,10 +54,12 @@ func NewCreateStoreParamsWithHTTPClient(client *http.Client) *CreateStoreParams 
 	}
 }
 
-/* CreateStoreParams contains all the parameters to send to the API endpoint
-   for the create store operation.
+/*
+CreateStoreParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create store operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateStoreParams struct {
 

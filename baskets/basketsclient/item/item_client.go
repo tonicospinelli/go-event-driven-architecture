@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  AddItem adds or add quantity to an item in the shopping basket
+AddItem adds or add quantity to an item in the shopping basket
 */
 func (a *Client) AddItem(params *AddItemParams, opts ...ClientOption) (*AddItemOK, error) {
 	// TODO: Validate the params before sending
@@ -73,7 +73,7 @@ func (a *Client) AddItem(params *AddItemParams, opts ...ClientOption) (*AddItemO
 }
 
 /*
-  RemoveItem removes or remove quantity to an item in the shopping basket
+RemoveItem removes or remove quantity to an item in the shopping basket
 */
 func (a *Client) RemoveItem(params *RemoveItemParams, opts ...ClientOption) (*RemoveItemOK, error) {
 	// TODO: Validate the params before sending

@@ -46,7 +46,8 @@ func NewRebrandProductOK() *RebrandProductOK {
 	return &RebrandProductOK{}
 }
 
-/* RebrandProductOK describes a response with status code 200, with default header values.
+/*
+RebrandProductOK describes a response with status code 200, with default header values.
 
 A successful response.
 */
@@ -54,9 +55,44 @@ type RebrandProductOK struct {
 	Payload models.StorespbRebrandProductResponse
 }
 
+// IsSuccess returns true when this rebrand product o k response has a 2xx status code
+func (o *RebrandProductOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this rebrand product o k response has a 3xx status code
+func (o *RebrandProductOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this rebrand product o k response has a 4xx status code
+func (o *RebrandProductOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this rebrand product o k response has a 5xx status code
+func (o *RebrandProductOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this rebrand product o k response a status code equal to that given
+func (o *RebrandProductOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the rebrand product o k response
+func (o *RebrandProductOK) Code() int {
+	return 200
+}
+
 func (o *RebrandProductOK) Error() string {
 	return fmt.Sprintf("[PUT /api/stores/products/{id}/rebrand][%d] rebrandProductOK  %+v", 200, o.Payload)
 }
+
+func (o *RebrandProductOK) String() string {
+	return fmt.Sprintf("[PUT /api/stores/products/{id}/rebrand][%d] rebrandProductOK  %+v", 200, o.Payload)
+}
+
 func (o *RebrandProductOK) GetPayload() models.StorespbRebrandProductResponse {
 	return o.Payload
 }
@@ -78,7 +114,8 @@ func NewRebrandProductDefault(code int) *RebrandProductDefault {
 	}
 }
 
-/* RebrandProductDefault describes a response with status code -1, with default header values.
+/*
+RebrandProductDefault describes a response with status code -1, with default header values.
 
 An unexpected error response.
 */
@@ -86,6 +123,31 @@ type RebrandProductDefault struct {
 	_statusCode int
 
 	Payload *models.RPCStatus
+}
+
+// IsSuccess returns true when this rebrand product default response has a 2xx status code
+func (o *RebrandProductDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this rebrand product default response has a 3xx status code
+func (o *RebrandProductDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this rebrand product default response has a 4xx status code
+func (o *RebrandProductDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this rebrand product default response has a 5xx status code
+func (o *RebrandProductDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this rebrand product default response a status code equal to that given
+func (o *RebrandProductDefault) IsCode(code int) bool {
+	return o._statusCode == code
 }
 
 // Code gets the status code for the rebrand product default response
@@ -96,6 +158,11 @@ func (o *RebrandProductDefault) Code() int {
 func (o *RebrandProductDefault) Error() string {
 	return fmt.Sprintf("[PUT /api/stores/products/{id}/rebrand][%d] rebrandProduct default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *RebrandProductDefault) String() string {
+	return fmt.Sprintf("[PUT /api/stores/products/{id}/rebrand][%d] rebrandProduct default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *RebrandProductDefault) GetPayload() *models.RPCStatus {
 	return o.Payload
 }

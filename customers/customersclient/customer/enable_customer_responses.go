@@ -46,7 +46,8 @@ func NewEnableCustomerOK() *EnableCustomerOK {
 	return &EnableCustomerOK{}
 }
 
-/* EnableCustomerOK describes a response with status code 200, with default header values.
+/*
+EnableCustomerOK describes a response with status code 200, with default header values.
 
 A successful response.
 */
@@ -54,9 +55,44 @@ type EnableCustomerOK struct {
 	Payload models.CustomerspbEnableCustomerResponse
 }
 
+// IsSuccess returns true when this enable customer o k response has a 2xx status code
+func (o *EnableCustomerOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this enable customer o k response has a 3xx status code
+func (o *EnableCustomerOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enable customer o k response has a 4xx status code
+func (o *EnableCustomerOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this enable customer o k response has a 5xx status code
+func (o *EnableCustomerOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enable customer o k response a status code equal to that given
+func (o *EnableCustomerOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the enable customer o k response
+func (o *EnableCustomerOK) Code() int {
+	return 200
+}
+
 func (o *EnableCustomerOK) Error() string {
 	return fmt.Sprintf("[PUT /api/customers/{id}/enable][%d] enableCustomerOK  %+v", 200, o.Payload)
 }
+
+func (o *EnableCustomerOK) String() string {
+	return fmt.Sprintf("[PUT /api/customers/{id}/enable][%d] enableCustomerOK  %+v", 200, o.Payload)
+}
+
 func (o *EnableCustomerOK) GetPayload() models.CustomerspbEnableCustomerResponse {
 	return o.Payload
 }
@@ -78,7 +114,8 @@ func NewEnableCustomerDefault(code int) *EnableCustomerDefault {
 	}
 }
 
-/* EnableCustomerDefault describes a response with status code -1, with default header values.
+/*
+EnableCustomerDefault describes a response with status code -1, with default header values.
 
 An unexpected error response.
 */
@@ -86,6 +123,31 @@ type EnableCustomerDefault struct {
 	_statusCode int
 
 	Payload *models.RPCStatus
+}
+
+// IsSuccess returns true when this enable customer default response has a 2xx status code
+func (o *EnableCustomerDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this enable customer default response has a 3xx status code
+func (o *EnableCustomerDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this enable customer default response has a 4xx status code
+func (o *EnableCustomerDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this enable customer default response has a 5xx status code
+func (o *EnableCustomerDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this enable customer default response a status code equal to that given
+func (o *EnableCustomerDefault) IsCode(code int) bool {
+	return o._statusCode == code
 }
 
 // Code gets the status code for the enable customer default response
@@ -96,6 +158,11 @@ func (o *EnableCustomerDefault) Code() int {
 func (o *EnableCustomerDefault) Error() string {
 	return fmt.Sprintf("[PUT /api/customers/{id}/enable][%d] enableCustomer default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *EnableCustomerDefault) String() string {
+	return fmt.Sprintf("[PUT /api/customers/{id}/enable][%d] enableCustomer default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *EnableCustomerDefault) GetPayload() *models.RPCStatus {
 	return o.Payload
 }

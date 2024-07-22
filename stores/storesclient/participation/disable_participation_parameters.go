@@ -52,10 +52,12 @@ func NewDisableParticipationParamsWithHTTPClient(client *http.Client) *DisablePa
 	}
 }
 
-/* DisableParticipationParams contains all the parameters to send to the API endpoint
-   for the disable participation operation.
+/*
+DisableParticipationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the disable participation operation.
+
+	Typically these are written to a http.Request.
 */
 type DisableParticipationParams struct {
 

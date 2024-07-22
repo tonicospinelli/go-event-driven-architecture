@@ -54,15 +54,17 @@ func NewDecreaseProductPriceParamsWithHTTPClient(client *http.Client) *DecreaseP
 	}
 }
 
-/* DecreaseProductPriceParams contains all the parameters to send to the API endpoint
-   for the decrease product price operation.
+/*
+DecreaseProductPriceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the decrease product price operation.
+
+	Typically these are written to a http.Request.
 */
 type DecreaseProductPriceParams struct {
 
 	// Body.
-	Body *models.DecreaseProductPriceParamsBody
+	Body *models.StoresServiceDecreaseProductPriceBody
 
 	// ID.
 	ID string
@@ -121,13 +123,13 @@ func (o *DecreaseProductPriceParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the decrease product price params
-func (o *DecreaseProductPriceParams) WithBody(body *models.DecreaseProductPriceParamsBody) *DecreaseProductPriceParams {
+func (o *DecreaseProductPriceParams) WithBody(body *models.StoresServiceDecreaseProductPriceBody) *DecreaseProductPriceParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the decrease product price params
-func (o *DecreaseProductPriceParams) SetBody(body *models.DecreaseProductPriceParamsBody) {
+func (o *DecreaseProductPriceParams) SetBody(body *models.StoresServiceDecreaseProductPriceBody) {
 	o.Body = body
 }
 

@@ -54,15 +54,17 @@ func NewRemoveItemParamsWithHTTPClient(client *http.Client) *RemoveItemParams {
 	}
 }
 
-/* RemoveItemParams contains all the parameters to send to the API endpoint
-   for the remove item operation.
+/*
+RemoveItemParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the remove item operation.
+
+	Typically these are written to a http.Request.
 */
 type RemoveItemParams struct {
 
 	// Body.
-	Body *models.RemoveItemParamsBody
+	Body *models.BasketServiceRemoveItemBody
 
 	// ID.
 	ID string
@@ -121,13 +123,13 @@ func (o *RemoveItemParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the remove item params
-func (o *RemoveItemParams) WithBody(body *models.RemoveItemParamsBody) *RemoveItemParams {
+func (o *RemoveItemParams) WithBody(body *models.BasketServiceRemoveItemBody) *RemoveItemParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the remove item params
-func (o *RemoveItemParams) SetBody(body *models.RemoveItemParamsBody) {
+func (o *RemoveItemParams) SetBody(body *models.BasketServiceRemoveItemBody) {
 	o.Body = body
 }
 

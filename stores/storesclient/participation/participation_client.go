@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  DisableParticipation disables store service participation
+DisableParticipation disables store service participation
 */
 func (a *Client) DisableParticipation(params *DisableParticipationParams, opts ...ClientOption) (*DisableParticipationOK, error) {
 	// TODO: Validate the params before sending
@@ -75,7 +75,7 @@ func (a *Client) DisableParticipation(params *DisableParticipationParams, opts .
 }
 
 /*
-  EnableParticipation enables store service participation
+EnableParticipation enables store service participation
 */
 func (a *Client) EnableParticipation(params *EnableParticipationParams, opts ...ClientOption) (*EnableParticipationOK, error) {
 	// TODO: Validate the params before sending
@@ -112,7 +112,7 @@ func (a *Client) EnableParticipation(params *EnableParticipationParams, opts ...
 }
 
 /*
-  GetParticipatingStores gets a list of participating stores
+GetParticipatingStores gets a list of participating stores
 */
 func (a *Client) GetParticipatingStores(params *GetParticipatingStoresParams, opts ...ClientOption) (*GetParticipatingStoresOK, error) {
 	// TODO: Validate the params before sending

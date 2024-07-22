@@ -46,7 +46,8 @@ func NewChangeSmsNumberOK() *ChangeSmsNumberOK {
 	return &ChangeSmsNumberOK{}
 }
 
-/* ChangeSmsNumberOK describes a response with status code 200, with default header values.
+/*
+ChangeSmsNumberOK describes a response with status code 200, with default header values.
 
 A successful response.
 */
@@ -54,9 +55,44 @@ type ChangeSmsNumberOK struct {
 	Payload models.CustomerspbChangeSmsNumberResponse
 }
 
+// IsSuccess returns true when this change sms number o k response has a 2xx status code
+func (o *ChangeSmsNumberOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this change sms number o k response has a 3xx status code
+func (o *ChangeSmsNumberOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this change sms number o k response has a 4xx status code
+func (o *ChangeSmsNumberOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this change sms number o k response has a 5xx status code
+func (o *ChangeSmsNumberOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this change sms number o k response a status code equal to that given
+func (o *ChangeSmsNumberOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the change sms number o k response
+func (o *ChangeSmsNumberOK) Code() int {
+	return 200
+}
+
 func (o *ChangeSmsNumberOK) Error() string {
 	return fmt.Sprintf("[PUT /api/customers/{id}/change-sms][%d] changeSmsNumberOK  %+v", 200, o.Payload)
 }
+
+func (o *ChangeSmsNumberOK) String() string {
+	return fmt.Sprintf("[PUT /api/customers/{id}/change-sms][%d] changeSmsNumberOK  %+v", 200, o.Payload)
+}
+
 func (o *ChangeSmsNumberOK) GetPayload() models.CustomerspbChangeSmsNumberResponse {
 	return o.Payload
 }
@@ -78,7 +114,8 @@ func NewChangeSmsNumberDefault(code int) *ChangeSmsNumberDefault {
 	}
 }
 
-/* ChangeSmsNumberDefault describes a response with status code -1, with default header values.
+/*
+ChangeSmsNumberDefault describes a response with status code -1, with default header values.
 
 An unexpected error response.
 */
@@ -86,6 +123,31 @@ type ChangeSmsNumberDefault struct {
 	_statusCode int
 
 	Payload *models.RPCStatus
+}
+
+// IsSuccess returns true when this change sms number default response has a 2xx status code
+func (o *ChangeSmsNumberDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this change sms number default response has a 3xx status code
+func (o *ChangeSmsNumberDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this change sms number default response has a 4xx status code
+func (o *ChangeSmsNumberDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this change sms number default response has a 5xx status code
+func (o *ChangeSmsNumberDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this change sms number default response a status code equal to that given
+func (o *ChangeSmsNumberDefault) IsCode(code int) bool {
+	return o._statusCode == code
 }
 
 // Code gets the status code for the change sms number default response
@@ -96,6 +158,11 @@ func (o *ChangeSmsNumberDefault) Code() int {
 func (o *ChangeSmsNumberDefault) Error() string {
 	return fmt.Sprintf("[PUT /api/customers/{id}/change-sms][%d] changeSmsNumber default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ChangeSmsNumberDefault) String() string {
+	return fmt.Sprintf("[PUT /api/customers/{id}/change-sms][%d] changeSmsNumber default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ChangeSmsNumberDefault) GetPayload() *models.RPCStatus {
 	return o.Payload
 }
