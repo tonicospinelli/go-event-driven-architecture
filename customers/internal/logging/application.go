@@ -54,3 +54,9 @@ func (a Application) DisableCustomer(ctx context.Context, disable application.Di
 	defer func() { a.logger.Info().Err(err).Msg("<-- Customers.DisableCustomer") }()
 	return a.App.DisableCustomer(ctx, disable)
 }
+
+func (a Application) ChangeSmsNumber(ctx context.Context, smsNumber application.ChangeSmsNumber) (err error) {
+	a.logger.Info().Msg("--> Customers.ChangeSmsNumber")
+	defer func() { a.logger.Info().Err(err).Msg("<-- Customers.ChangeSmsNumber") }()
+	return a.App.ChangeSmsNumber(ctx, smsNumber)
+}
