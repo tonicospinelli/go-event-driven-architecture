@@ -1,4 +1,4 @@
-package monolith
+package system
 
 import (
 	"context"
@@ -13,16 +13,16 @@ import (
 	"eda-in-golang/internal/waiter"
 )
 
-type Monolith interface {
+type Service interface {
 	Config() config.AppConfig
 	DB() *sql.DB
 	JS() nats.JetStreamContext
-	Logger() zerolog.Logger
 	Mux() *chi.Mux
 	RPC() *grpc.Server
 	Waiter() waiter.Waiter
+	Logger() zerolog.Logger
 }
 
 type Module interface {
-	Startup(context.Context, Monolith) error
+	Startup(context.Context, Service) error
 }
