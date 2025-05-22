@@ -52,14 +52,6 @@ func (r ProductCacheRepository) Rebrand(ctx context.Context, productID, name str
 	return err
 }
 
-func (r ProductCacheRepository) UpdatePrice(ctx context.Context, productID string, delta float64) error {
-	const query = `UPDATE %s SET price = price + $2 WHERE id = $1`
-
-	_, err := r.db.ExecContext(ctx, r.table(query), productID, delta)
-
-	return err
-}
-
 func (r ProductCacheRepository) Remove(ctx context.Context, productID string) error {
 	const query = `DELETE FROM %s WHERE id = $1`
 
@@ -78,11 +70,11 @@ func (r ProductCacheRepository) Find(ctx context.Context, productID string) (*do
 	err := r.db.QueryRowContext(ctx, r.table(query), productID).Scan(&product.StoreID, &product.Name, &product.Price)
 	if err != nil {
 		if !errors.Is(err, sql.ErrNoRows) {
-			return nil, errors.Wrap(err, "depot scanning product")
+			return nil, errors.Wrap(err, "scanning product")
 		}
 		product, err = r.fallback.Find(ctx, productID)
 		if err != nil {
-			return nil, errors.Wrap(err, "depot product fallback failed")
+			return nil, errors.Wrap(err, "product fallback failed")
 		}
 		// attempt to add it to the cache
 		return product, r.Add(ctx, product.ID, product.StoreID, product.Name, product.Price)

@@ -29,10 +29,10 @@ func NewProductCacheRepository(tableName string, db *sql.DB, fallback applicatio
 	}
 }
 
-func (r ProductCacheRepository) Add(ctx context.Context, productID, storeID, name string) error {
-	const query = `INSERT INTO %s (id, store_id, name) VALUES ($1, $2, $3)`
+func (r ProductCacheRepository) Add(ctx context.Context, productID, storeID, name string, price float64) error {
+	const query = `INSERT INTO %s (id, store_id, name, price) VALUES ($1, $2, $3, $4)`
 
-	_, err := r.db.ExecContext(ctx, r.table(query), productID, storeID, name)
+	_, err := r.db.ExecContext(ctx, r.table(query), productID, storeID, name, price)
 	if err != nil {
 		var pgErr *pgconn.PgError
 		if errors.As(err, &pgErr) {
@@ -68,7 +68,7 @@ func (r ProductCacheRepository) Find(ctx context.Context, productID string) (*mo
 		ID: productID,
 	}
 
-	err := r.db.QueryRowContext(ctx, r.table(query), productID).Scan(&product.StoreID, &product.Name, &product.Price)
+	err := r.db.QueryRowContext(ctx, r.table(query), productID).Scan(&product.Name, &product.Price, &product.StoreID)
 	if err != nil {
 		if !errors.Is(err, sql.ErrNoRows) {
 			return nil, errors.Wrap(err, "scanning product")
@@ -78,7 +78,7 @@ func (r ProductCacheRepository) Find(ctx context.Context, productID string) (*mo
 			return nil, errors.Wrap(err, "product fallback failed")
 		}
 		// attempt to add it to the cache
-		return product, r.Add(ctx, product.ID, product.StoreID, product.Name)
+		return product, r.Add(ctx, product.ID, product.StoreID, product.Name, product.Price)
 	}
 
 	return product, nil
