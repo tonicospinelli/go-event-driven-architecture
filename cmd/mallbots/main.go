@@ -14,6 +14,7 @@ import (
 	"google.golang.org/grpc/reflection"
 
 	"eda-in-golang/baskets"
+	"eda-in-golang/cosec"
 	"eda-in-golang/customers"
 	"eda-in-golang/depot"
 	"eda-in-golang/internal/config"
@@ -82,6 +83,7 @@ func run() (err error) {
 		&ordering.Module{},
 		&payments.Module{},
 		&stores.Module{},
+		&cosec.Module{},
 		&search.Module{},
 	}
 
@@ -100,6 +102,15 @@ func run() (err error) {
 		m.waitForRPC,
 		m.waitForStream,
 	)
+
+	// go func() {
+	// 	for {
+	// 		var mem runtime.MemStats
+	// 		runtime.ReadMemStats(&mem)
+	// 		m.logger.Debug().Msgf("Alloc = %v  TotalAlloc = %v  Sys = %v  NumGC = %v", mem.Alloc/1024, mem.TotalAlloc/1024, mem.Sys/1024, mem.NumGC)
+	// 		time.Sleep(10 * time.Second)
+	// 	}
+	// }()
 
 	return m.waiter.Wait()
 }
