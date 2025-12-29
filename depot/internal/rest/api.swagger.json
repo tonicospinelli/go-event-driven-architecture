@@ -80,7 +80,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/depotpbDepotServiceCancelShoppingListBody"
+              "type": "object"
             }
           }
         ],
@@ -119,7 +119,12 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/DepotServiceAssignShoppingListBody"
+              "type": "object",
+              "properties": {
+                "botId": {
+                  "type": "string"
+                }
+              }
             }
           }
         ],
@@ -158,7 +163,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/DepotServiceCompleteShoppingListBody"
+              "type": "object"
             }
           }
         ],
@@ -169,17 +174,6 @@
     }
   },
   "definitions": {
-    "DepotServiceAssignShoppingListBody": {
-      "type": "object",
-      "properties": {
-        "botId": {
-          "type": "string"
-        }
-      }
-    },
-    "DepotServiceCompleteShoppingListBody": {
-      "type": "object"
-    },
     "depotpbAssignShoppingListResponse": {
       "type": "object"
     },
@@ -198,7 +192,6 @@
         "items": {
           "type": "array",
           "items": {
-            "type": "object",
             "$ref": "#/definitions/depotpbOrderItem"
           }
         }
@@ -211,9 +204,6 @@
           "type": "string"
         }
       }
-    },
-    "depotpbDepotServiceCancelShoppingListBody": {
-      "type": "object"
     },
     "depotpbOrderItem": {
       "type": "object",
@@ -252,7 +242,6 @@
         "details": {
           "type": "array",
           "items": {
-            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }

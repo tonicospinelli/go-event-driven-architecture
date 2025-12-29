@@ -140,7 +140,16 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/BasketServiceAddItemBody"
+              "type": "object",
+              "properties": {
+                "productId": {
+                  "type": "string"
+                },
+                "quantity": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
             }
           }
         ],
@@ -179,7 +188,12 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/BasketServiceCheckoutBasketBody"
+              "type": "object",
+              "properties": {
+                "paymentId": {
+                  "type": "string"
+                }
+              }
             }
           }
         ],
@@ -218,7 +232,16 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/BasketServiceRemoveItemBody"
+              "type": "object",
+              "properties": {
+                "productId": {
+                  "type": "string"
+                },
+                "quantity": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
             }
           }
         ],
@@ -229,38 +252,6 @@
     }
   },
   "definitions": {
-    "BasketServiceAddItemBody": {
-      "type": "object",
-      "properties": {
-        "productId": {
-          "type": "string"
-        },
-        "quantity": {
-          "type": "integer",
-          "format": "int32"
-        }
-      }
-    },
-    "BasketServiceCheckoutBasketBody": {
-      "type": "object",
-      "properties": {
-        "paymentId": {
-          "type": "string"
-        }
-      }
-    },
-    "BasketServiceRemoveItemBody": {
-      "type": "object",
-      "properties": {
-        "productId": {
-          "type": "string"
-        },
-        "quantity": {
-          "type": "integer",
-          "format": "int32"
-        }
-      }
-    },
     "basketspbAddItemResponse": {
       "type": "object"
     },
@@ -273,7 +264,6 @@
         "items": {
           "type": "array",
           "items": {
-            "type": "object",
             "$ref": "#/definitions/basketspbItem"
           }
         }
@@ -359,7 +349,6 @@
         "details": {
           "type": "array",
           "items": {
-            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }

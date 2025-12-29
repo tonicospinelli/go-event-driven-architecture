@@ -111,7 +111,12 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/CustomersServiceChangeSmsNumberBody"
+              "type": "object",
+              "properties": {
+                "smsNumber": {
+                  "type": "string"
+                }
+              }
             }
           }
         ],
@@ -150,7 +155,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/CustomersServiceDisableCustomerBody"
+              "type": "object"
             }
           }
         ],
@@ -189,7 +194,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/CustomersServiceEnableCustomerBody"
+              "type": "object"
             }
           }
         ],
@@ -200,20 +205,6 @@
     }
   },
   "definitions": {
-    "CustomersServiceChangeSmsNumberBody": {
-      "type": "object",
-      "properties": {
-        "smsNumber": {
-          "type": "string"
-        }
-      }
-    },
-    "CustomersServiceDisableCustomerBody": {
-      "type": "object"
-    },
-    "CustomersServiceEnableCustomerBody": {
-      "type": "object"
-    },
     "customerspbAuthorizeCustomerResponse": {
       "type": "object"
     },
@@ -292,7 +283,6 @@
         "details": {
           "type": "array",
           "items": {
-            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
