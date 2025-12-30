@@ -6,8 +6,6 @@ package basket
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
-	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -23,7 +21,7 @@ type GetBasketReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GetBasketReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
+func (o *GetBasketReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
 		result := NewGetBasketOK()
@@ -48,8 +46,7 @@ func NewGetBasketOK() *GetBasketOK {
 	return &GetBasketOK{}
 }
 
-/*
-GetBasketOK describes a response with status code 200, with default header values.
+/* GetBasketOK describes a response with status code 200, with default header values.
 
 A successful response.
 */
@@ -57,46 +54,9 @@ type GetBasketOK struct {
 	Payload *models.BasketspbGetBasketResponse
 }
 
-// IsSuccess returns true when this get basket o k response has a 2xx status code
-func (o *GetBasketOK) IsSuccess() bool {
-	return true
-}
-
-// IsRedirect returns true when this get basket o k response has a 3xx status code
-func (o *GetBasketOK) IsRedirect() bool {
-	return false
-}
-
-// IsClientError returns true when this get basket o k response has a 4xx status code
-func (o *GetBasketOK) IsClientError() bool {
-	return false
-}
-
-// IsServerError returns true when this get basket o k response has a 5xx status code
-func (o *GetBasketOK) IsServerError() bool {
-	return false
-}
-
-// IsCode returns true when this get basket o k response a status code equal to that given
-func (o *GetBasketOK) IsCode(code int) bool {
-	return code == 200
-}
-
-// Code gets the status code for the get basket o k response
-func (o *GetBasketOK) Code() int {
-	return 200
-}
-
 func (o *GetBasketOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /api/baskets/{id}][%d] getBasketOK %s", 200, payload)
+	return fmt.Sprintf("[GET /api/baskets/{id}][%d] getBasketOK  %+v", 200, o.Payload)
 }
-
-func (o *GetBasketOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /api/baskets/{id}][%d] getBasketOK %s", 200, payload)
-}
-
 func (o *GetBasketOK) GetPayload() *models.BasketspbGetBasketResponse {
 	return o.Payload
 }
@@ -106,7 +66,7 @@ func (o *GetBasketOK) readResponse(response runtime.ClientResponse, consumer run
 	o.Payload = new(models.BasketspbGetBasketResponse)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -120,8 +80,7 @@ func NewGetBasketDefault(code int) *GetBasketDefault {
 	}
 }
 
-/*
-GetBasketDefault describes a response with status code -1, with default header values.
+/* GetBasketDefault describes a response with status code -1, with default header values.
 
 An unexpected error response.
 */
@@ -131,46 +90,14 @@ type GetBasketDefault struct {
 	Payload *models.RPCStatus
 }
 
-// IsSuccess returns true when this get basket default response has a 2xx status code
-func (o *GetBasketDefault) IsSuccess() bool {
-	return o._statusCode/100 == 2
-}
-
-// IsRedirect returns true when this get basket default response has a 3xx status code
-func (o *GetBasketDefault) IsRedirect() bool {
-	return o._statusCode/100 == 3
-}
-
-// IsClientError returns true when this get basket default response has a 4xx status code
-func (o *GetBasketDefault) IsClientError() bool {
-	return o._statusCode/100 == 4
-}
-
-// IsServerError returns true when this get basket default response has a 5xx status code
-func (o *GetBasketDefault) IsServerError() bool {
-	return o._statusCode/100 == 5
-}
-
-// IsCode returns true when this get basket default response a status code equal to that given
-func (o *GetBasketDefault) IsCode(code int) bool {
-	return o._statusCode == code
-}
-
 // Code gets the status code for the get basket default response
 func (o *GetBasketDefault) Code() int {
 	return o._statusCode
 }
 
 func (o *GetBasketDefault) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /api/baskets/{id}][%d] getBasket default %s", o._statusCode, payload)
+	return fmt.Sprintf("[GET /api/baskets/{id}][%d] getBasket default  %+v", o._statusCode, o.Payload)
 }
-
-func (o *GetBasketDefault) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /api/baskets/{id}][%d] getBasket default %s", o._statusCode, payload)
-}
-
 func (o *GetBasketDefault) GetPayload() *models.RPCStatus {
 	return o.Payload
 }
@@ -180,7 +107,7 @@ func (o *GetBasketDefault) readResponse(response runtime.ClientResponse, consume
 	o.Payload = new(models.RPCStatus)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

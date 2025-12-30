@@ -7,38 +7,12 @@ package basket
 
 import (
 	"github.com/go-openapi/runtime"
-	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new basket API client.
 func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
-}
-
-// New creates a new basket API client with basic auth credentials.
-// It takes the following parameters:
-// - host: http host (github.com).
-// - basePath: any base path for the API client ("/v1", "/v3").
-// - scheme: http scheme ("http", "https").
-// - user: user for basic authentication header.
-// - password: password for basic authentication header.
-func NewClientWithBasicAuth(host, basePath, scheme, user, password string) ClientService {
-	transport := httptransport.New(host, basePath, []string{scheme})
-	transport.DefaultAuthentication = httptransport.BasicAuth(user, password)
-	return &Client{transport: transport, formats: strfmt.Default}
-}
-
-// New creates a new basket API client with a bearer token for authentication.
-// It takes the following parameters:
-// - host: http host (github.com).
-// - basePath: any base path for the API client ("/v1", "/v3").
-// - scheme: http scheme ("http", "https").
-// - bearerToken: bearer token for Bearer authentication header.
-func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) ClientService {
-	transport := httptransport.New(host, basePath, []string{scheme})
-	transport.DefaultAuthentication = httptransport.BearerToken(bearerToken)
-	return &Client{transport: transport, formats: strfmt.Default}
 }
 
 /*
@@ -49,7 +23,7 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption may be used to customize the behavior of Client methods.
+// ClientOption is the option for Client methods
 type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
@@ -66,10 +40,10 @@ type ClientService interface {
 }
 
 /*
-CancelBasket cancels a shopping basket
+  CancelBasket cancels a shopping basket
 */
 func (a *Client) CancelBasket(params *CancelBasketParams, opts ...ClientOption) (*CancelBasketOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCancelBasketParams()
 	}
@@ -88,30 +62,25 @@ func (a *Client) CancelBasket(params *CancelBasketParams, opts ...ClientOption) 
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*CancelBasketOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*CancelBasketDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-CheckoutBasket checkouts with a shopping basket
+  CheckoutBasket checkouts with a shopping basket
 */
 func (a *Client) CheckoutBasket(params *CheckoutBasketParams, opts ...ClientOption) (*CheckoutBasketOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCheckoutBasketParams()
 	}
@@ -130,30 +99,25 @@ func (a *Client) CheckoutBasket(params *CheckoutBasketParams, opts ...ClientOpti
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*CheckoutBasketOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*CheckoutBasketDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetBasket gets a basket
+  GetBasket gets a basket
 */
 func (a *Client) GetBasket(params *GetBasketParams, opts ...ClientOption) (*GetBasketOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBasketParams()
 	}
@@ -172,30 +136,25 @@ func (a *Client) GetBasket(params *GetBasketParams, opts ...ClientOption) (*GetB
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*GetBasketOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*GetBasketDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-StartBasket starts a new shopping basket
+  StartBasket starts a new shopping basket
 */
 func (a *Client) StartBasket(params *StartBasketParams, opts ...ClientOption) (*StartBasketOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewStartBasketParams()
 	}
@@ -214,22 +173,17 @@ func (a *Client) StartBasket(params *StartBasketParams, opts ...ClientOption) (*
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*StartBasketOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*StartBasketDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

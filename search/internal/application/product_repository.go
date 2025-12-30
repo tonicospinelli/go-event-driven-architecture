@@ -11,7 +11,7 @@ type ProductRepository interface {
 }
 
 type ProductCacheRepository interface {
-	Add(ctx context.Context, productID, storeID, name string, price float64) error
+	Add(ctx context.Context, productID, storeID, name string) error
 	Rebrand(ctx context.Context, productID, name string) error
 	Remove(ctx context.Context, productID string) error
 	ProductRepository

@@ -16,12 +16,11 @@ func NewFakeProductCacheRepository() *FakeProductCacheRepository {
 	return &FakeProductCacheRepository{products: map[string]*Product{}}
 }
 
-func (r *FakeProductCacheRepository) Add(ctx context.Context, productID, storeID, name string, price float64) error {
+func (r *FakeProductCacheRepository) Add(ctx context.Context, productID, storeID, name string) error {
 	r.products[productID] = &Product{
 		ID:      productID,
 		StoreID: storeID,
 		Name:    name,
-		Price:   price,
 	}
 
 	return nil

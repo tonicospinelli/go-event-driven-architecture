@@ -8,4 +8,4 @@ package models
 // StorespbRebrandProductResponse storespb rebrand product response
 //
 // swagger:model storespbRebrandProductResponse
-type StorespbRebrandProductResponse any
+type StorespbRebrandProductResponse interface{}

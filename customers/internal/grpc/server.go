@@ -67,11 +67,6 @@ func (s server) DisableCustomer(ctx context.Context, request *customerspb.Disabl
 	return &customerspb.DisableCustomerResponse{}, err
 }
 
-func (s server) ChangeSmsNumber(ctx context.Context, request *customerspb.ChangeSmsNumberRequest) (resp *customerspb.ChangeSmsNumberResponse, err error) {
-	err = s.app.ChangeSmsNumber(ctx, application.ChangeSmsNumber{ID: request.GetId(), SmsNumber: request.GetSmsNumber()})
-	return &customerspb.ChangeSmsNumberResponse{}, err
-}
-
 func (s server) customerFromDomain(customer *domain.Customer) *customerspb.Customer {
 	return &customerspb.Customer{
 		Id:        customer.ID(),

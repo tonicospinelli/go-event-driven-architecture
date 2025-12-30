@@ -8,4 +8,4 @@ package models
 // CustomerspbEnableCustomerResponse customerspb enable customer response
 //
 // swagger:model customerspbEnableCustomerResponse
-type CustomerspbEnableCustomerResponse any
+type CustomerspbEnableCustomerResponse interface{}

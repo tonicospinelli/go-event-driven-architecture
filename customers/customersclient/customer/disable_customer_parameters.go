@@ -52,17 +52,15 @@ func NewDisableCustomerParamsWithHTTPClient(client *http.Client) *DisableCustome
 	}
 }
 
-/*
-DisableCustomerParams contains all the parameters to send to the API endpoint
+/* DisableCustomerParams contains all the parameters to send to the API endpoint
+   for the disable customer operation.
 
-	for the disable customer operation.
-
-	Typically these are written to a http.Request.
+   Typically these are written to a http.Request.
 */
 type DisableCustomerParams struct {
 
 	// Body.
-	Body any
+	Body interface{}
 
 	// ID.
 	ID string
@@ -121,13 +119,13 @@ func (o *DisableCustomerParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the disable customer params
-func (o *DisableCustomerParams) WithBody(body any) *DisableCustomerParams {
+func (o *DisableCustomerParams) WithBody(body interface{}) *DisableCustomerParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the disable customer params
-func (o *DisableCustomerParams) SetBody(body any) {
+func (o *DisableCustomerParams) SetBody(body interface{}) {
 	o.Body = body
 }
 

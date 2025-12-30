@@ -52,12 +52,10 @@ func NewRemoveProductParamsWithHTTPClient(client *http.Client) *RemoveProductPar
 	}
 }
 
-/*
-RemoveProductParams contains all the parameters to send to the API endpoint
+/* RemoveProductParams contains all the parameters to send to the API endpoint
+   for the remove product operation.
 
-	for the remove product operation.
-
-	Typically these are written to a http.Request.
+   Typically these are written to a http.Request.
 */
 type RemoveProductParams struct {
 

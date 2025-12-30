@@ -96,13 +96,3 @@ func (c *Customer) Disable() error {
 
 	return nil
 }
-
-func (c *Customer) ChangeSmsNumber(smsNumber string) error {
-	c.SmsNumber = smsNumber
-
-	c.AddEvent(CustomerSmsChangedEvent, &CustomerSmsChanged{
-		Customer: c,
-	})
-
-	return nil
-}

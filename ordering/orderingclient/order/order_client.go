@@ -7,38 +7,12 @@ package order
 
 import (
 	"github.com/go-openapi/runtime"
-	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new order API client.
 func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
-}
-
-// New creates a new order API client with basic auth credentials.
-// It takes the following parameters:
-// - host: http host (github.com).
-// - basePath: any base path for the API client ("/v1", "/v3").
-// - scheme: http scheme ("http", "https").
-// - user: user for basic authentication header.
-// - password: password for basic authentication header.
-func NewClientWithBasicAuth(host, basePath, scheme, user, password string) ClientService {
-	transport := httptransport.New(host, basePath, []string{scheme})
-	transport.DefaultAuthentication = httptransport.BasicAuth(user, password)
-	return &Client{transport: transport, formats: strfmt.Default}
-}
-
-// New creates a new order API client with a bearer token for authentication.
-// It takes the following parameters:
-// - host: http host (github.com).
-// - basePath: any base path for the API client ("/v1", "/v3").
-// - scheme: http scheme ("http", "https").
-// - bearerToken: bearer token for Bearer authentication header.
-func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) ClientService {
-	transport := httptransport.New(host, basePath, []string{scheme})
-	transport.DefaultAuthentication = httptransport.BearerToken(bearerToken)
-	return &Client{transport: transport, formats: strfmt.Default}
 }
 
 /*
@@ -49,7 +23,7 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption may be used to customize the behavior of Client methods.
+// ClientOption is the option for Client methods
 type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
@@ -64,10 +38,10 @@ type ClientService interface {
 }
 
 /*
-CancelOrder cancels an order
+  CancelOrder cancels an order
 */
 func (a *Client) CancelOrder(params *CancelOrderParams, opts ...ClientOption) (*CancelOrderOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCancelOrderParams()
 	}
@@ -86,30 +60,25 @@ func (a *Client) CancelOrder(params *CancelOrderParams, opts ...ClientOption) (*
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*CancelOrderOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*CancelOrderDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-CreateOrder starts a new order
+  CreateOrder starts a new order
 */
 func (a *Client) CreateOrder(params *CreateOrderParams, opts ...ClientOption) (*CreateOrderOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateOrderParams()
 	}
@@ -128,30 +97,25 @@ func (a *Client) CreateOrder(params *CreateOrderParams, opts ...ClientOption) (*
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*CreateOrderOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*CreateOrderDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetOrder gets an order
+  GetOrder gets an order
 */
 func (a *Client) GetOrder(params *GetOrderParams, opts ...ClientOption) (*GetOrderOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetOrderParams()
 	}
@@ -170,22 +134,17 @@ func (a *Client) GetOrder(params *GetOrderParams, opts ...ClientOption) (*GetOrd
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*GetOrderOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*GetOrderDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

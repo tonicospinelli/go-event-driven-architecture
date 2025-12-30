@@ -52,12 +52,10 @@ func NewGetParticipatingStoresParamsWithHTTPClient(client *http.Client) *GetPart
 	}
 }
 
-/*
-GetParticipatingStoresParams contains all the parameters to send to the API endpoint
+/* GetParticipatingStoresParams contains all the parameters to send to the API endpoint
+   for the get participating stores operation.
 
-	for the get participating stores operation.
-
-	Typically these are written to a http.Request.
+   Typically these are written to a http.Request.
 */
 type GetParticipatingStoresParams struct {
 	timeout    time.Duration

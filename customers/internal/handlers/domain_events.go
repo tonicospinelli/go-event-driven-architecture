@@ -56,7 +56,7 @@ func (h domainHandlers[T]) onCustomerRegistered(ctx context.Context, event ddd.A
 }
 
 func (h domainHandlers[T]) onCustomerSmsChanged(ctx context.Context, event ddd.AggregateEvent) error {
-	payload := event.Payload().(*domain.CustomerSmsChanged)
+	payload := event.Payload().(*domain.CustomerRegistered)
 	return h.publisher.Publish(ctx, customerspb.CustomerAggregateChannel,
 		ddd.NewEvent(customerspb.CustomerSmsChangedEvent, &customerspb.CustomerSmsChanged{
 			Id:        payload.Customer.ID(),

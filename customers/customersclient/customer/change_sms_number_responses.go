@@ -6,8 +6,6 @@ package customer
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
-	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -23,7 +21,7 @@ type ChangeSmsNumberReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *ChangeSmsNumberReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
+func (o *ChangeSmsNumberReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
 		result := NewChangeSmsNumberOK()
@@ -48,8 +46,7 @@ func NewChangeSmsNumberOK() *ChangeSmsNumberOK {
 	return &ChangeSmsNumberOK{}
 }
 
-/*
-ChangeSmsNumberOK describes a response with status code 200, with default header values.
+/* ChangeSmsNumberOK describes a response with status code 200, with default header values.
 
 A successful response.
 */
@@ -57,46 +54,9 @@ type ChangeSmsNumberOK struct {
 	Payload models.CustomerspbChangeSmsNumberResponse
 }
 
-// IsSuccess returns true when this change sms number o k response has a 2xx status code
-func (o *ChangeSmsNumberOK) IsSuccess() bool {
-	return true
-}
-
-// IsRedirect returns true when this change sms number o k response has a 3xx status code
-func (o *ChangeSmsNumberOK) IsRedirect() bool {
-	return false
-}
-
-// IsClientError returns true when this change sms number o k response has a 4xx status code
-func (o *ChangeSmsNumberOK) IsClientError() bool {
-	return false
-}
-
-// IsServerError returns true when this change sms number o k response has a 5xx status code
-func (o *ChangeSmsNumberOK) IsServerError() bool {
-	return false
-}
-
-// IsCode returns true when this change sms number o k response a status code equal to that given
-func (o *ChangeSmsNumberOK) IsCode(code int) bool {
-	return code == 200
-}
-
-// Code gets the status code for the change sms number o k response
-func (o *ChangeSmsNumberOK) Code() int {
-	return 200
-}
-
 func (o *ChangeSmsNumberOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /api/customers/{id}/change-sms][%d] changeSmsNumberOK %s", 200, payload)
+	return fmt.Sprintf("[PUT /api/customers/{id}/change-sms][%d] changeSmsNumberOK  %+v", 200, o.Payload)
 }
-
-func (o *ChangeSmsNumberOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /api/customers/{id}/change-sms][%d] changeSmsNumberOK %s", 200, payload)
-}
-
 func (o *ChangeSmsNumberOK) GetPayload() models.CustomerspbChangeSmsNumberResponse {
 	return o.Payload
 }
@@ -104,7 +64,7 @@ func (o *ChangeSmsNumberOK) GetPayload() models.CustomerspbChangeSmsNumberRespon
 func (o *ChangeSmsNumberOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -118,8 +78,7 @@ func NewChangeSmsNumberDefault(code int) *ChangeSmsNumberDefault {
 	}
 }
 
-/*
-ChangeSmsNumberDefault describes a response with status code -1, with default header values.
+/* ChangeSmsNumberDefault describes a response with status code -1, with default header values.
 
 An unexpected error response.
 */
@@ -129,46 +88,14 @@ type ChangeSmsNumberDefault struct {
 	Payload *models.RPCStatus
 }
 
-// IsSuccess returns true when this change sms number default response has a 2xx status code
-func (o *ChangeSmsNumberDefault) IsSuccess() bool {
-	return o._statusCode/100 == 2
-}
-
-// IsRedirect returns true when this change sms number default response has a 3xx status code
-func (o *ChangeSmsNumberDefault) IsRedirect() bool {
-	return o._statusCode/100 == 3
-}
-
-// IsClientError returns true when this change sms number default response has a 4xx status code
-func (o *ChangeSmsNumberDefault) IsClientError() bool {
-	return o._statusCode/100 == 4
-}
-
-// IsServerError returns true when this change sms number default response has a 5xx status code
-func (o *ChangeSmsNumberDefault) IsServerError() bool {
-	return o._statusCode/100 == 5
-}
-
-// IsCode returns true when this change sms number default response a status code equal to that given
-func (o *ChangeSmsNumberDefault) IsCode(code int) bool {
-	return o._statusCode == code
-}
-
 // Code gets the status code for the change sms number default response
 func (o *ChangeSmsNumberDefault) Code() int {
 	return o._statusCode
 }
 
 func (o *ChangeSmsNumberDefault) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /api/customers/{id}/change-sms][%d] changeSmsNumber default %s", o._statusCode, payload)
+	return fmt.Sprintf("[PUT /api/customers/{id}/change-sms][%d] changeSmsNumber default  %+v", o._statusCode, o.Payload)
 }
-
-func (o *ChangeSmsNumberDefault) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /api/customers/{id}/change-sms][%d] changeSmsNumber default %s", o._statusCode, payload)
-}
-
 func (o *ChangeSmsNumberDefault) GetPayload() *models.RPCStatus {
 	return o.Payload
 }
@@ -178,7 +105,7 @@ func (o *ChangeSmsNumberDefault) readResponse(response runtime.ClientResponse, c
 	o.Payload = new(models.RPCStatus)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

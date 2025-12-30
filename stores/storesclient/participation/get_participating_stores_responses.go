@@ -6,8 +6,6 @@ package participation
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
-	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -23,7 +21,7 @@ type GetParticipatingStoresReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GetParticipatingStoresReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
+func (o *GetParticipatingStoresReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
 		result := NewGetParticipatingStoresOK()
@@ -48,8 +46,7 @@ func NewGetParticipatingStoresOK() *GetParticipatingStoresOK {
 	return &GetParticipatingStoresOK{}
 }
 
-/*
-GetParticipatingStoresOK describes a response with status code 200, with default header values.
+/* GetParticipatingStoresOK describes a response with status code 200, with default header values.
 
 A successful response.
 */
@@ -57,46 +54,9 @@ type GetParticipatingStoresOK struct {
 	Payload *models.StorespbGetParticipatingStoresResponse
 }
 
-// IsSuccess returns true when this get participating stores o k response has a 2xx status code
-func (o *GetParticipatingStoresOK) IsSuccess() bool {
-	return true
-}
-
-// IsRedirect returns true when this get participating stores o k response has a 3xx status code
-func (o *GetParticipatingStoresOK) IsRedirect() bool {
-	return false
-}
-
-// IsClientError returns true when this get participating stores o k response has a 4xx status code
-func (o *GetParticipatingStoresOK) IsClientError() bool {
-	return false
-}
-
-// IsServerError returns true when this get participating stores o k response has a 5xx status code
-func (o *GetParticipatingStoresOK) IsServerError() bool {
-	return false
-}
-
-// IsCode returns true when this get participating stores o k response a status code equal to that given
-func (o *GetParticipatingStoresOK) IsCode(code int) bool {
-	return code == 200
-}
-
-// Code gets the status code for the get participating stores o k response
-func (o *GetParticipatingStoresOK) Code() int {
-	return 200
-}
-
 func (o *GetParticipatingStoresOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /api/stores/participating][%d] getParticipatingStoresOK %s", 200, payload)
+	return fmt.Sprintf("[GET /api/stores/participating][%d] getParticipatingStoresOK  %+v", 200, o.Payload)
 }
-
-func (o *GetParticipatingStoresOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /api/stores/participating][%d] getParticipatingStoresOK %s", 200, payload)
-}
-
 func (o *GetParticipatingStoresOK) GetPayload() *models.StorespbGetParticipatingStoresResponse {
 	return o.Payload
 }
@@ -106,7 +66,7 @@ func (o *GetParticipatingStoresOK) readResponse(response runtime.ClientResponse,
 	o.Payload = new(models.StorespbGetParticipatingStoresResponse)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -120,8 +80,7 @@ func NewGetParticipatingStoresDefault(code int) *GetParticipatingStoresDefault {
 	}
 }
 
-/*
-GetParticipatingStoresDefault describes a response with status code -1, with default header values.
+/* GetParticipatingStoresDefault describes a response with status code -1, with default header values.
 
 An unexpected error response.
 */
@@ -131,46 +90,14 @@ type GetParticipatingStoresDefault struct {
 	Payload *models.RPCStatus
 }
 
-// IsSuccess returns true when this get participating stores default response has a 2xx status code
-func (o *GetParticipatingStoresDefault) IsSuccess() bool {
-	return o._statusCode/100 == 2
-}
-
-// IsRedirect returns true when this get participating stores default response has a 3xx status code
-func (o *GetParticipatingStoresDefault) IsRedirect() bool {
-	return o._statusCode/100 == 3
-}
-
-// IsClientError returns true when this get participating stores default response has a 4xx status code
-func (o *GetParticipatingStoresDefault) IsClientError() bool {
-	return o._statusCode/100 == 4
-}
-
-// IsServerError returns true when this get participating stores default response has a 5xx status code
-func (o *GetParticipatingStoresDefault) IsServerError() bool {
-	return o._statusCode/100 == 5
-}
-
-// IsCode returns true when this get participating stores default response a status code equal to that given
-func (o *GetParticipatingStoresDefault) IsCode(code int) bool {
-	return o._statusCode == code
-}
-
 // Code gets the status code for the get participating stores default response
 func (o *GetParticipatingStoresDefault) Code() int {
 	return o._statusCode
 }
 
 func (o *GetParticipatingStoresDefault) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /api/stores/participating][%d] getParticipatingStores default %s", o._statusCode, payload)
+	return fmt.Sprintf("[GET /api/stores/participating][%d] getParticipatingStores default  %+v", o._statusCode, o.Payload)
 }
-
-func (o *GetParticipatingStoresDefault) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /api/stores/participating][%d] getParticipatingStores default %s", o._statusCode, payload)
-}
-
 func (o *GetParticipatingStoresDefault) GetPayload() *models.RPCStatus {
 	return o.Payload
 }
@@ -180,7 +107,7 @@ func (o *GetParticipatingStoresDefault) readResponse(response runtime.ClientResp
 	o.Payload = new(models.RPCStatus)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

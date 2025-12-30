@@ -7,38 +7,12 @@ package store
 
 import (
 	"github.com/go-openapi/runtime"
-	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new store API client.
 func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
-}
-
-// New creates a new store API client with basic auth credentials.
-// It takes the following parameters:
-// - host: http host (github.com).
-// - basePath: any base path for the API client ("/v1", "/v3").
-// - scheme: http scheme ("http", "https").
-// - user: user for basic authentication header.
-// - password: password for basic authentication header.
-func NewClientWithBasicAuth(host, basePath, scheme, user, password string) ClientService {
-	transport := httptransport.New(host, basePath, []string{scheme})
-	transport.DefaultAuthentication = httptransport.BasicAuth(user, password)
-	return &Client{transport: transport, formats: strfmt.Default}
-}
-
-// New creates a new store API client with a bearer token for authentication.
-// It takes the following parameters:
-// - host: http host (github.com).
-// - basePath: any base path for the API client ("/v1", "/v3").
-// - scheme: http scheme ("http", "https").
-// - bearerToken: bearer token for Bearer authentication header.
-func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) ClientService {
-	transport := httptransport.New(host, basePath, []string{scheme})
-	transport.DefaultAuthentication = httptransport.BearerToken(bearerToken)
-	return &Client{transport: transport, formats: strfmt.Default}
 }
 
 /*
@@ -49,7 +23,7 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption may be used to customize the behavior of Client methods.
+// ClientOption is the option for Client methods
 type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
@@ -66,10 +40,10 @@ type ClientService interface {
 }
 
 /*
-CreateStore creates a new store
+  CreateStore creates a new store
 */
 func (a *Client) CreateStore(params *CreateStoreParams, opts ...ClientOption) (*CreateStoreOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateStoreParams()
 	}
@@ -88,30 +62,25 @@ func (a *Client) CreateStore(params *CreateStoreParams, opts ...ClientOption) (*
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*CreateStoreOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*CreateStoreDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetStore gets a store
+  GetStore gets a store
 */
 func (a *Client) GetStore(params *GetStoreParams, opts ...ClientOption) (*GetStoreOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetStoreParams()
 	}
@@ -130,30 +99,25 @@ func (a *Client) GetStore(params *GetStoreParams, opts ...ClientOption) (*GetSto
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*GetStoreOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*GetStoreDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetStores gets a list of stores
+  GetStores gets a list of stores
 */
 func (a *Client) GetStores(params *GetStoresParams, opts ...ClientOption) (*GetStoresOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetStoresParams()
 	}
@@ -172,30 +136,25 @@ func (a *Client) GetStores(params *GetStoresParams, opts ...ClientOption) (*GetS
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*GetStoresOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*GetStoresDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-RebrandStore rebrand store API
+  RebrandStore rebrand store API
 */
 func (a *Client) RebrandStore(params *RebrandStoreParams, opts ...ClientOption) (*RebrandStoreOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRebrandStoreParams()
 	}
@@ -214,22 +173,17 @@ func (a *Client) RebrandStore(params *RebrandStoreParams, opts ...ClientOption) 
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*RebrandStoreOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*RebrandStoreDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

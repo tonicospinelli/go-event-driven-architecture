@@ -7,7 +7,6 @@ package models
 
 import (
 	"context"
-	stderrors "errors"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -44,15 +43,11 @@ func (m *CustomerspbGetCustomerResponse) validateCustomer(formats strfmt.Registr
 
 	if m.Customer != nil {
 		if err := m.Customer.Validate(formats); err != nil {
-			ve := new(errors.Validation)
-			if stderrors.As(err, &ve) {
+			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("customer")
-			}
-			ce := new(errors.CompositeError)
-			if stderrors.As(err, &ce) {
+			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("customer")
 			}
-
 			return err
 		}
 	}
@@ -77,21 +72,12 @@ func (m *CustomerspbGetCustomerResponse) ContextValidate(ctx context.Context, fo
 func (m *CustomerspbGetCustomerResponse) contextValidateCustomer(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Customer != nil {
-
-		if swag.IsZero(m.Customer) { // not required
-			return nil
-		}
-
 		if err := m.Customer.ContextValidate(ctx, formats); err != nil {
-			ve := new(errors.Validation)
-			if stderrors.As(err, &ve) {
+			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("customer")
-			}
-			ce := new(errors.CompositeError)
-			if stderrors.As(err, &ce) {
+			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("customer")
 			}
-
 			return err
 		}
 	}

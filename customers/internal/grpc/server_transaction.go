@@ -80,17 +80,6 @@ func (s serverTx) DisableCustomer(ctx context.Context, request *customerspb.Disa
 	return next.DisableCustomer(ctx, request)
 }
 
-func (s serverTx) ChangeSmsNumber(ctx context.Context, request *customerspb.ChangeSmsNumberRequest) (resp *customerspb.ChangeSmsNumberResponse, err error) {
-	ctx = s.c.Scoped(ctx)
-	defer func(tx *sql.Tx) {
-		err = s.closeTx(tx, err)
-	}(di.Get(ctx, "tx").(*sql.Tx))
-
-	next := server{app: di.Get(ctx, "app").(application.App)}
-
-	return next.ChangeSmsNumber(ctx, request)
-}
-
 func (s serverTx) closeTx(tx *sql.Tx, err error) error {
 	if p := recover(); p != nil {
 		_ = tx.Rollback()

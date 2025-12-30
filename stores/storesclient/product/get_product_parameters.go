@@ -52,12 +52,10 @@ func NewGetProductParamsWithHTTPClient(client *http.Client) *GetProductParams {
 	}
 }
 
-/*
-GetProductParams contains all the parameters to send to the API endpoint
+/* GetProductParams contains all the parameters to send to the API endpoint
+   for the get product operation.
 
-	for the get product operation.
-
-	Typically these are written to a http.Request.
+   Typically these are written to a http.Request.
 */
 type GetProductParams struct {
 

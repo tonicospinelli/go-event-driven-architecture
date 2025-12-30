@@ -52,12 +52,10 @@ func NewGetStoresParamsWithHTTPClient(client *http.Client) *GetStoresParams {
 	}
 }
 
-/*
-GetStoresParams contains all the parameters to send to the API endpoint
+/* GetStoresParams contains all the parameters to send to the API endpoint
+   for the get stores operation.
 
-	for the get stores operation.
-
-	Typically these are written to a http.Request.
+   Typically these are written to a http.Request.
 */
 type GetStoresParams struct {
 	timeout    time.Duration

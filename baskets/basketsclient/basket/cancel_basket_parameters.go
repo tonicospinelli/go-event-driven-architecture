@@ -52,12 +52,10 @@ func NewCancelBasketParamsWithHTTPClient(client *http.Client) *CancelBasketParam
 	}
 }
 
-/*
-CancelBasketParams contains all the parameters to send to the API endpoint
+/* CancelBasketParams contains all the parameters to send to the API endpoint
+   for the cancel basket operation.
 
-	for the cancel basket operation.
-
-	Typically these are written to a http.Request.
+   Typically these are written to a http.Request.
 */
 type CancelBasketParams struct {
 

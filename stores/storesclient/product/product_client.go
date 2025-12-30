@@ -7,38 +7,12 @@ package product
 
 import (
 	"github.com/go-openapi/runtime"
-	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new product API client.
 func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
-}
-
-// New creates a new product API client with basic auth credentials.
-// It takes the following parameters:
-// - host: http host (github.com).
-// - basePath: any base path for the API client ("/v1", "/v3").
-// - scheme: http scheme ("http", "https").
-// - user: user for basic authentication header.
-// - password: password for basic authentication header.
-func NewClientWithBasicAuth(host, basePath, scheme, user, password string) ClientService {
-	transport := httptransport.New(host, basePath, []string{scheme})
-	transport.DefaultAuthentication = httptransport.BasicAuth(user, password)
-	return &Client{transport: transport, formats: strfmt.Default}
-}
-
-// New creates a new product API client with a bearer token for authentication.
-// It takes the following parameters:
-// - host: http host (github.com).
-// - basePath: any base path for the API client ("/v1", "/v3").
-// - scheme: http scheme ("http", "https").
-// - bearerToken: bearer token for Bearer authentication header.
-func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) ClientService {
-	transport := httptransport.New(host, basePath, []string{scheme})
-	transport.DefaultAuthentication = httptransport.BearerToken(bearerToken)
-	return &Client{transport: transport, formats: strfmt.Default}
 }
 
 /*
@@ -49,7 +23,7 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption may be used to customize the behavior of Client methods.
+// ClientOption is the option for Client methods
 type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
@@ -72,10 +46,10 @@ type ClientService interface {
 }
 
 /*
-AddProduct adds a store product
+  AddProduct adds a store product
 */
 func (a *Client) AddProduct(params *AddProductParams, opts ...ClientOption) (*AddProductOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewAddProductParams()
 	}
@@ -94,30 +68,25 @@ func (a *Client) AddProduct(params *AddProductParams, opts ...ClientOption) (*Ad
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*AddProductOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*AddProductDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-DecreaseProductPrice decreases the price of a product
+  DecreaseProductPrice decreases the price of a product
 */
 func (a *Client) DecreaseProductPrice(params *DecreaseProductPriceParams, opts ...ClientOption) (*DecreaseProductPriceOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDecreaseProductPriceParams()
 	}
@@ -136,30 +105,25 @@ func (a *Client) DecreaseProductPrice(params *DecreaseProductPriceParams, opts .
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*DecreaseProductPriceOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*DecreaseProductPriceDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetProduct gets a store product
+  GetProduct gets a store product
 */
 func (a *Client) GetProduct(params *GetProductParams, opts ...ClientOption) (*GetProductOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetProductParams()
 	}
@@ -178,30 +142,25 @@ func (a *Client) GetProduct(params *GetProductParams, opts ...ClientOption) (*Ge
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*GetProductOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*GetProductDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetStoreProduct gets a list of store products
+  GetStoreProduct gets a list of store products
 */
 func (a *Client) GetStoreProduct(params *GetStoreProductParams, opts ...ClientOption) (*GetStoreProductOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetStoreProductParams()
 	}
@@ -220,30 +179,25 @@ func (a *Client) GetStoreProduct(params *GetStoreProductParams, opts ...ClientOp
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*GetStoreProductOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*GetStoreProductDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-IncreaseProductPrice increases the price of a product
+  IncreaseProductPrice increases the price of a product
 */
 func (a *Client) IncreaseProductPrice(params *IncreaseProductPriceParams, opts ...ClientOption) (*IncreaseProductPriceOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewIncreaseProductPriceParams()
 	}
@@ -262,30 +216,25 @@ func (a *Client) IncreaseProductPrice(params *IncreaseProductPriceParams, opts .
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*IncreaseProductPriceOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*IncreaseProductPriceDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-RebrandProduct changes the name and description of a product
+  RebrandProduct changes the name and description of a product
 */
 func (a *Client) RebrandProduct(params *RebrandProductParams, opts ...ClientOption) (*RebrandProductOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRebrandProductParams()
 	}
@@ -304,30 +253,25 @@ func (a *Client) RebrandProduct(params *RebrandProductParams, opts ...ClientOpti
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*RebrandProductOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*RebrandProductDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-RemoveProduct removes a store product
+  RemoveProduct removes a store product
 */
 func (a *Client) RemoveProduct(params *RemoveProductParams, opts ...ClientOption) (*RemoveProductOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRemoveProductParams()
 	}
@@ -346,22 +290,17 @@ func (a *Client) RemoveProduct(params *RemoveProductParams, opts ...ClientOption
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*RemoveProductOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*RemoveProductDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

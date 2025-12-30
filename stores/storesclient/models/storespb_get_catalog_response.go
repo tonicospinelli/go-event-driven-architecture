@@ -7,7 +7,6 @@ package models
 
 import (
 	"context"
-	stderrors "errors"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -50,15 +49,11 @@ func (m *StorespbGetCatalogResponse) validateProducts(formats strfmt.Registry) e
 
 		if m.Products[i] != nil {
 			if err := m.Products[i].Validate(formats); err != nil {
-				ve := new(errors.Validation)
-				if stderrors.As(err, &ve) {
+				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("products" + "." + strconv.Itoa(i))
-				}
-				ce := new(errors.CompositeError)
-				if stderrors.As(err, &ce) {
+				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("products" + "." + strconv.Itoa(i))
 				}
-
 				return err
 			}
 		}
@@ -87,21 +82,12 @@ func (m *StorespbGetCatalogResponse) contextValidateProducts(ctx context.Context
 	for i := 0; i < len(m.Products); i++ {
 
 		if m.Products[i] != nil {
-
-			if swag.IsZero(m.Products[i]) { // not required
-				return nil
-			}
-
 			if err := m.Products[i].ContextValidate(ctx, formats); err != nil {
-				ve := new(errors.Validation)
-				if stderrors.As(err, &ve) {
+				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("products" + "." + strconv.Itoa(i))
-				}
-				ce := new(errors.CompositeError)
-				if stderrors.As(err, &ce) {
+				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("products" + "." + strconv.Itoa(i))
 				}
-
 				return err
 			}
 		}

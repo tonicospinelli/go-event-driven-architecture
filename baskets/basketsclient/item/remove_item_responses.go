@@ -6,8 +6,6 @@ package item
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
-	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -23,7 +21,7 @@ type RemoveItemReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *RemoveItemReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
+func (o *RemoveItemReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
 		result := NewRemoveItemOK()
@@ -48,8 +46,7 @@ func NewRemoveItemOK() *RemoveItemOK {
 	return &RemoveItemOK{}
 }
 
-/*
-RemoveItemOK describes a response with status code 200, with default header values.
+/* RemoveItemOK describes a response with status code 200, with default header values.
 
 A successful response.
 */
@@ -57,46 +54,9 @@ type RemoveItemOK struct {
 	Payload models.BasketspbRemoveItemResponse
 }
 
-// IsSuccess returns true when this remove item o k response has a 2xx status code
-func (o *RemoveItemOK) IsSuccess() bool {
-	return true
-}
-
-// IsRedirect returns true when this remove item o k response has a 3xx status code
-func (o *RemoveItemOK) IsRedirect() bool {
-	return false
-}
-
-// IsClientError returns true when this remove item o k response has a 4xx status code
-func (o *RemoveItemOK) IsClientError() bool {
-	return false
-}
-
-// IsServerError returns true when this remove item o k response has a 5xx status code
-func (o *RemoveItemOK) IsServerError() bool {
-	return false
-}
-
-// IsCode returns true when this remove item o k response a status code equal to that given
-func (o *RemoveItemOK) IsCode(code int) bool {
-	return code == 200
-}
-
-// Code gets the status code for the remove item o k response
-func (o *RemoveItemOK) Code() int {
-	return 200
-}
-
 func (o *RemoveItemOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /api/baskets/{id}/removeItem][%d] removeItemOK %s", 200, payload)
+	return fmt.Sprintf("[PUT /api/baskets/{id}/removeItem][%d] removeItemOK  %+v", 200, o.Payload)
 }
-
-func (o *RemoveItemOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /api/baskets/{id}/removeItem][%d] removeItemOK %s", 200, payload)
-}
-
 func (o *RemoveItemOK) GetPayload() models.BasketspbRemoveItemResponse {
 	return o.Payload
 }
@@ -104,7 +64,7 @@ func (o *RemoveItemOK) GetPayload() models.BasketspbRemoveItemResponse {
 func (o *RemoveItemOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -118,8 +78,7 @@ func NewRemoveItemDefault(code int) *RemoveItemDefault {
 	}
 }
 
-/*
-RemoveItemDefault describes a response with status code -1, with default header values.
+/* RemoveItemDefault describes a response with status code -1, with default header values.
 
 An unexpected error response.
 */
@@ -129,46 +88,14 @@ type RemoveItemDefault struct {
 	Payload *models.RPCStatus
 }
 
-// IsSuccess returns true when this remove item default response has a 2xx status code
-func (o *RemoveItemDefault) IsSuccess() bool {
-	return o._statusCode/100 == 2
-}
-
-// IsRedirect returns true when this remove item default response has a 3xx status code
-func (o *RemoveItemDefault) IsRedirect() bool {
-	return o._statusCode/100 == 3
-}
-
-// IsClientError returns true when this remove item default response has a 4xx status code
-func (o *RemoveItemDefault) IsClientError() bool {
-	return o._statusCode/100 == 4
-}
-
-// IsServerError returns true when this remove item default response has a 5xx status code
-func (o *RemoveItemDefault) IsServerError() bool {
-	return o._statusCode/100 == 5
-}
-
-// IsCode returns true when this remove item default response a status code equal to that given
-func (o *RemoveItemDefault) IsCode(code int) bool {
-	return o._statusCode == code
-}
-
 // Code gets the status code for the remove item default response
 func (o *RemoveItemDefault) Code() int {
 	return o._statusCode
 }
 
 func (o *RemoveItemDefault) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /api/baskets/{id}/removeItem][%d] removeItem default %s", o._statusCode, payload)
+	return fmt.Sprintf("[PUT /api/baskets/{id}/removeItem][%d] removeItem default  %+v", o._statusCode, o.Payload)
 }
-
-func (o *RemoveItemDefault) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /api/baskets/{id}/removeItem][%d] removeItem default %s", o._statusCode, payload)
-}
-
 func (o *RemoveItemDefault) GetPayload() *models.RPCStatus {
 	return o.Payload
 }
@@ -178,7 +105,7 @@ func (o *RemoveItemDefault) readResponse(response runtime.ClientResponse, consum
 	o.Payload = new(models.RPCStatus)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

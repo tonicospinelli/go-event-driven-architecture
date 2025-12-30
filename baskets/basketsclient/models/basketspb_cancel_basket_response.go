@@ -8,4 +8,4 @@ package models
 // BasketspbCancelBasketResponse basketspb cancel basket response
 //
 // swagger:model basketspbCancelBasketResponse
-type BasketspbCancelBasketResponse any
+type BasketspbCancelBasketResponse interface{}

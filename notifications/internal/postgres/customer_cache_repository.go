@@ -46,7 +46,7 @@ func (r CustomerCacheRepository) Add(ctx context.Context, customerID, name, smsN
 }
 
 func (r CustomerCacheRepository) UpdateSmsNumber(ctx context.Context, customerID, smsNumber string) error {
-	const query = `UPDATE %s SET sms_number = $2 WHERE id = $1`
+	const query = `UPDATE %s SET sms_number = $2 WHERE customerID = $1`
 
 	_, err := r.db.ExecContext(ctx, r.table(query), customerID, smsNumber)
 

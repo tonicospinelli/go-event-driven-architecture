@@ -7,7 +7,6 @@ package models
 
 import (
 	"context"
-	stderrors "errors"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -56,15 +55,11 @@ func (m *RPCStatus) validateDetails(formats strfmt.Registry) error {
 
 		if m.Details[i] != nil {
 			if err := m.Details[i].Validate(formats); err != nil {
-				ve := new(errors.Validation)
-				if stderrors.As(err, &ve) {
+				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("details" + "." + strconv.Itoa(i))
-				}
-				ce := new(errors.CompositeError)
-				if stderrors.As(err, &ce) {
+				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("details" + "." + strconv.Itoa(i))
 				}
-
 				return err
 			}
 		}
@@ -93,21 +88,12 @@ func (m *RPCStatus) contextValidateDetails(ctx context.Context, formats strfmt.R
 	for i := 0; i < len(m.Details); i++ {
 
 		if m.Details[i] != nil {
-
-			if swag.IsZero(m.Details[i]) { // not required
-				return nil
-			}
-
 			if err := m.Details[i].ContextValidate(ctx, formats); err != nil {
-				ve := new(errors.Validation)
-				if stderrors.As(err, &ve) {
+				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("details" + "." + strconv.Itoa(i))
-				}
-				ce := new(errors.CompositeError)
-				if stderrors.As(err, &ce) {
+				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("details" + "." + strconv.Itoa(i))
 				}
-
 				return err
 			}
 		}

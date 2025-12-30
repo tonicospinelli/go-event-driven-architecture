@@ -8,4 +8,4 @@ package models
 // CustomerspbChangeSmsNumberResponse customerspb change sms number response
 //
 // swagger:model customerspbChangeSmsNumberResponse
-type CustomerspbChangeSmsNumberResponse any
+type CustomerspbChangeSmsNumberResponse interface{}

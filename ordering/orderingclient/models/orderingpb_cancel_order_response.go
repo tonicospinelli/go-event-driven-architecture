@@ -8,4 +8,4 @@ package models
 // OrderingpbCancelOrderResponse orderingpb cancel order response
 //
 // swagger:model orderingpbCancelOrderResponse
-type OrderingpbCancelOrderResponse any
+type OrderingpbCancelOrderResponse interface{}

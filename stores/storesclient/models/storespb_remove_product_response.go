@@ -8,4 +8,4 @@ package models
 // StorespbRemoveProductResponse storespb remove product response
 //
 // swagger:model storespbRemoveProductResponse
-type StorespbRemoveProductResponse any
+type StorespbRemoveProductResponse interface{}

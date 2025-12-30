@@ -54,12 +54,10 @@ func NewCreateOrderParamsWithHTTPClient(client *http.Client) *CreateOrderParams 
 	}
 }
 
-/*
-CreateOrderParams contains all the parameters to send to the API endpoint
+/* CreateOrderParams contains all the parameters to send to the API endpoint
+   for the create order operation.
 
-	for the create order operation.
-
-	Typically these are written to a http.Request.
+   Typically these are written to a http.Request.
 */
 type CreateOrderParams struct {
 

@@ -103,7 +103,7 @@ func (h integrationHandlers[T]) onCustomerRegistered(ctx context.Context, event 
 
 func (h integrationHandlers[T]) onProductAdded(ctx context.Context, event ddd.Event) error {
 	payload := event.Payload().(*storespb.ProductAdded)
-	return h.products.Add(ctx, payload.GetId(), payload.GetStoreId(), payload.GetName(), payload.GetPrice())
+	return h.products.Add(ctx, payload.GetId(), payload.GetStoreId(), payload.GetName())
 }
 
 func (h integrationHandlers[T]) onProductRebranded(ctx context.Context, event ddd.Event) error {

@@ -8,4 +8,4 @@ package models
 // BasketspbCheckoutBasketResponse basketspb checkout basket response
 //
 // swagger:model basketspbCheckoutBasketResponse
-type BasketspbCheckoutBasketResponse any
+type BasketspbCheckoutBasketResponse interface{}

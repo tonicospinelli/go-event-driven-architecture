@@ -8,4 +8,4 @@ package models
 // StorespbDecreaseProductPriceResponse storespb decrease product price response
 //
 // swagger:model storespbDecreaseProductPriceResponse
-type StorespbDecreaseProductPriceResponse any
+type StorespbDecreaseProductPriceResponse interface{}

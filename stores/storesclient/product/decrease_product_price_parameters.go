@@ -54,12 +54,10 @@ func NewDecreaseProductPriceParamsWithHTTPClient(client *http.Client) *DecreaseP
 	}
 }
 
-/*
-DecreaseProductPriceParams contains all the parameters to send to the API endpoint
+/* DecreaseProductPriceParams contains all the parameters to send to the API endpoint
+   for the decrease product price operation.
 
-	for the decrease product price operation.
-
-	Typically these are written to a http.Request.
+   Typically these are written to a http.Request.
 */
 type DecreaseProductPriceParams struct {
 

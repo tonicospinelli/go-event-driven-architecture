@@ -54,12 +54,10 @@ func NewStartBasketParamsWithHTTPClient(client *http.Client) *StartBasketParams 
 	}
 }
 
-/*
-StartBasketParams contains all the parameters to send to the API endpoint
+/* StartBasketParams contains all the parameters to send to the API endpoint
+   for the start basket operation.
 
-	for the start basket operation.
-
-	Typically these are written to a http.Request.
+   Typically these are written to a http.Request.
 */
 type StartBasketParams struct {
 

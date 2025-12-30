@@ -30,18 +30,12 @@ type (
 		ID string
 	}
 
-	ChangeSmsNumber struct {
-		ID        string
-		SmsNumber string
-	}
-
 	App interface {
 		RegisterCustomer(ctx context.Context, register RegisterCustomer) error
 		AuthorizeCustomer(ctx context.Context, authorize AuthorizeCustomer) error
 		GetCustomer(ctx context.Context, get GetCustomer) (*domain.Customer, error)
 		EnableCustomer(ctx context.Context, enable EnableCustomer) error
 		DisableCustomer(ctx context.Context, disable DisableCustomer) error
-		ChangeSmsNumber(ctx context.Context, sms ChangeSmsNumber) error
 	}
 
 	Application struct {
@@ -141,26 +135,4 @@ func (a Application) DisableCustomer(ctx context.Context, disable DisableCustome
 
 func (a Application) GetCustomer(ctx context.Context, get GetCustomer) (*domain.Customer, error) {
 	return a.customers.Find(ctx, get.ID)
-}
-
-func (a Application) ChangeSmsNumber(ctx context.Context, sms ChangeSmsNumber) error {
-	customer, err := a.customers.Find(ctx, sms.ID)
-	if err != nil {
-		return err
-	}
-
-	if err = customer.ChangeSmsNumber(sms.SmsNumber); err != nil {
-		return err
-	}
-
-	if err = a.customers.Update(ctx, customer); err != nil {
-		return err
-	}
-
-	// publish domain events
-	if err = a.domainPublisher.Publish(ctx, customer.Events()...); err != nil {
-		return err
-	}
-
-	return nil
 }

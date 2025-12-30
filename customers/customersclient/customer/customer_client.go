@@ -7,38 +7,12 @@ package customer
 
 import (
 	"github.com/go-openapi/runtime"
-	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new customer API client.
 func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
-}
-
-// New creates a new customer API client with basic auth credentials.
-// It takes the following parameters:
-// - host: http host (github.com).
-// - basePath: any base path for the API client ("/v1", "/v3").
-// - scheme: http scheme ("http", "https").
-// - user: user for basic authentication header.
-// - password: password for basic authentication header.
-func NewClientWithBasicAuth(host, basePath, scheme, user, password string) ClientService {
-	transport := httptransport.New(host, basePath, []string{scheme})
-	transport.DefaultAuthentication = httptransport.BasicAuth(user, password)
-	return &Client{transport: transport, formats: strfmt.Default}
-}
-
-// New creates a new customer API client with a bearer token for authentication.
-// It takes the following parameters:
-// - host: http host (github.com).
-// - basePath: any base path for the API client ("/v1", "/v3").
-// - scheme: http scheme ("http", "https").
-// - bearerToken: bearer token for Bearer authentication header.
-func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) ClientService {
-	transport := httptransport.New(host, basePath, []string{scheme})
-	transport.DefaultAuthentication = httptransport.BearerToken(bearerToken)
-	return &Client{transport: transport, formats: strfmt.Default}
 }
 
 /*
@@ -49,7 +23,7 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption may be used to customize the behavior of Client methods.
+// ClientOption is the option for Client methods
 type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
@@ -68,10 +42,10 @@ type ClientService interface {
 }
 
 /*
-DisableCustomer disables a customer
+  DisableCustomer disables a customer
 */
 func (a *Client) DisableCustomer(params *DisableCustomerParams, opts ...ClientOption) (*DisableCustomerOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDisableCustomerParams()
 	}
@@ -90,30 +64,25 @@ func (a *Client) DisableCustomer(params *DisableCustomerParams, opts ...ClientOp
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*DisableCustomerOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*DisableCustomerDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-ChangeSmsNumber changes a customers s m s number
+  ChangeSmsNumber changes a customers s m s number
 */
 func (a *Client) ChangeSmsNumber(params *ChangeSmsNumberParams, opts ...ClientOption) (*ChangeSmsNumberOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewChangeSmsNumberParams()
 	}
@@ -132,30 +101,25 @@ func (a *Client) ChangeSmsNumber(params *ChangeSmsNumberParams, opts ...ClientOp
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*ChangeSmsNumberOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*ChangeSmsNumberDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-CreateCustomer creates a new customer
+  CreateCustomer creates a new customer
 */
 func (a *Client) CreateCustomer(params *CreateCustomerParams, opts ...ClientOption) (*CreateCustomerOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateCustomerParams()
 	}
@@ -174,30 +138,25 @@ func (a *Client) CreateCustomer(params *CreateCustomerParams, opts ...ClientOpti
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*CreateCustomerOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*CreateCustomerDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-EnableCustomer enables a customer
+  EnableCustomer enables a customer
 */
 func (a *Client) EnableCustomer(params *EnableCustomerParams, opts ...ClientOption) (*EnableCustomerOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnableCustomerParams()
 	}
@@ -216,30 +175,25 @@ func (a *Client) EnableCustomer(params *EnableCustomerParams, opts ...ClientOpti
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*EnableCustomerOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*EnableCustomerDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetCustomer gets a customer
+  GetCustomer gets a customer
 */
 func (a *Client) GetCustomer(params *GetCustomerParams, opts ...ClientOption) (*GetCustomerOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomerParams()
 	}
@@ -258,22 +212,17 @@ func (a *Client) GetCustomer(params *GetCustomerParams, opts ...ClientOption) (*
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*GetCustomerOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-	//
-	// a default response is provided: fill this and return an error
+	// unexpected success response
 	unexpectedSuccess := result.(*GetCustomerDefault)
-
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

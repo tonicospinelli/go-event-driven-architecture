@@ -54,12 +54,10 @@ func NewRebrandProductParamsWithHTTPClient(client *http.Client) *RebrandProductP
 	}
 }
 
-/*
-RebrandProductParams contains all the parameters to send to the API endpoint
+/* RebrandProductParams contains all the parameters to send to the API endpoint
+   for the rebrand product operation.
 
-	for the rebrand product operation.
-
-	Typically these are written to a http.Request.
+   Typically these are written to a http.Request.
 */
 type RebrandProductParams struct {
 

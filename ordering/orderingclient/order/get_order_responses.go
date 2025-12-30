@@ -6,8 +6,6 @@ package order
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
-	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -23,7 +21,7 @@ type GetOrderReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GetOrderReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
+func (o *GetOrderReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
 		result := NewGetOrderOK()
@@ -48,8 +46,7 @@ func NewGetOrderOK() *GetOrderOK {
 	return &GetOrderOK{}
 }
 
-/*
-GetOrderOK describes a response with status code 200, with default header values.
+/* GetOrderOK describes a response with status code 200, with default header values.
 
 A successful response.
 */
@@ -57,46 +54,9 @@ type GetOrderOK struct {
 	Payload *models.OrderingpbGetOrderResponse
 }
 
-// IsSuccess returns true when this get order o k response has a 2xx status code
-func (o *GetOrderOK) IsSuccess() bool {
-	return true
-}
-
-// IsRedirect returns true when this get order o k response has a 3xx status code
-func (o *GetOrderOK) IsRedirect() bool {
-	return false
-}
-
-// IsClientError returns true when this get order o k response has a 4xx status code
-func (o *GetOrderOK) IsClientError() bool {
-	return false
-}
-
-// IsServerError returns true when this get order o k response has a 5xx status code
-func (o *GetOrderOK) IsServerError() bool {
-	return false
-}
-
-// IsCode returns true when this get order o k response a status code equal to that given
-func (o *GetOrderOK) IsCode(code int) bool {
-	return code == 200
-}
-
-// Code gets the status code for the get order o k response
-func (o *GetOrderOK) Code() int {
-	return 200
-}
-
 func (o *GetOrderOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /api/ordering/{id}][%d] getOrderOK %s", 200, payload)
+	return fmt.Sprintf("[GET /api/ordering/{id}][%d] getOrderOK  %+v", 200, o.Payload)
 }
-
-func (o *GetOrderOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /api/ordering/{id}][%d] getOrderOK %s", 200, payload)
-}
-
 func (o *GetOrderOK) GetPayload() *models.OrderingpbGetOrderResponse {
 	return o.Payload
 }
@@ -106,7 +66,7 @@ func (o *GetOrderOK) readResponse(response runtime.ClientResponse, consumer runt
 	o.Payload = new(models.OrderingpbGetOrderResponse)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -120,8 +80,7 @@ func NewGetOrderDefault(code int) *GetOrderDefault {
 	}
 }
 
-/*
-GetOrderDefault describes a response with status code -1, with default header values.
+/* GetOrderDefault describes a response with status code -1, with default header values.
 
 An unexpected error response.
 */
@@ -131,46 +90,14 @@ type GetOrderDefault struct {
 	Payload *models.RPCStatus
 }
 
-// IsSuccess returns true when this get order default response has a 2xx status code
-func (o *GetOrderDefault) IsSuccess() bool {
-	return o._statusCode/100 == 2
-}
-
-// IsRedirect returns true when this get order default response has a 3xx status code
-func (o *GetOrderDefault) IsRedirect() bool {
-	return o._statusCode/100 == 3
-}
-
-// IsClientError returns true when this get order default response has a 4xx status code
-func (o *GetOrderDefault) IsClientError() bool {
-	return o._statusCode/100 == 4
-}
-
-// IsServerError returns true when this get order default response has a 5xx status code
-func (o *GetOrderDefault) IsServerError() bool {
-	return o._statusCode/100 == 5
-}
-
-// IsCode returns true when this get order default response a status code equal to that given
-func (o *GetOrderDefault) IsCode(code int) bool {
-	return o._statusCode == code
-}
-
 // Code gets the status code for the get order default response
 func (o *GetOrderDefault) Code() int {
 	return o._statusCode
 }
 
 func (o *GetOrderDefault) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /api/ordering/{id}][%d] getOrder default %s", o._statusCode, payload)
+	return fmt.Sprintf("[GET /api/ordering/{id}][%d] getOrder default  %+v", o._statusCode, o.Payload)
 }
-
-func (o *GetOrderDefault) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /api/ordering/{id}][%d] getOrder default %s", o._statusCode, payload)
-}
-
 func (o *GetOrderDefault) GetPayload() *models.RPCStatus {
 	return o.Payload
 }
@@ -180,7 +107,7 @@ func (o *GetOrderDefault) readResponse(response runtime.ClientResponse, consumer
 	o.Payload = new(models.RPCStatus)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

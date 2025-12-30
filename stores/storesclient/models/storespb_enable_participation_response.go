@@ -8,4 +8,4 @@ package models
 // StorespbEnableParticipationResponse storespb enable participation response
 //
 // swagger:model storespbEnableParticipationResponse
-type StorespbEnableParticipationResponse any
+type StorespbEnableParticipationResponse interface{}

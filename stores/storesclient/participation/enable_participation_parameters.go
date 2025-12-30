@@ -52,17 +52,15 @@ func NewEnableParticipationParamsWithHTTPClient(client *http.Client) *EnablePart
 	}
 }
 
-/*
-EnableParticipationParams contains all the parameters to send to the API endpoint
+/* EnableParticipationParams contains all the parameters to send to the API endpoint
+   for the enable participation operation.
 
-	for the enable participation operation.
-
-	Typically these are written to a http.Request.
+   Typically these are written to a http.Request.
 */
 type EnableParticipationParams struct {
 
 	// Body.
-	Body any
+	Body interface{}
 
 	// ID.
 	ID string
@@ -121,13 +119,13 @@ func (o *EnableParticipationParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the enable participation params
-func (o *EnableParticipationParams) WithBody(body any) *EnableParticipationParams {
+func (o *EnableParticipationParams) WithBody(body interface{}) *EnableParticipationParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the enable participation params
-func (o *EnableParticipationParams) SetBody(body any) {
+func (o *EnableParticipationParams) SetBody(body interface{}) {
 	o.Body = body
 }
 
